@@ -2,12 +2,53 @@
 
 Prototype Django pour administrer le questionnaire myHCL TND, recueillir les réponses par lien public et exporter les données en `.xlsx`.
 
+## Version Streamlit
+
+Une version Streamlit plus simple à publier est disponible dans `streamlit_app.py`.
+
+Lancement local :
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Sur Streamlit Community Cloud :
+
+1. Choisir ce dépôt GitHub.
+2. Définir `streamlit_app.py` comme fichier principal.
+3. Ajouter les secrets :
+
+```toml
+ADMIN_PASSWORD = "mot-de-passe-a-changer"
+GOOGLE_SHEET_ID = "id-du-google-sheet"
+
+[google_service_account]
+type = "service_account"
+project_id = "..."
+private_key_id = "..."
+private_key = "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n"
+client_email = "..."
+client_id = "..."
+auth_uri = "https://accounts.google.com/o/oauth2/auth"
+token_uri = "https://oauth2.googleapis.com/token"
+auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs"
+client_x509_cert_url = "..."
+```
+
+Partager le Google Sheet avec le `client_email` du compte de service en droit édition.
+
+Lien public : URL Streamlit normale.
+
+Lien admin : ajouter `?mode=admin` à l'URL Streamlit.
+
+Sans `GOOGLE_SHEET_ID` et compte de service Google, les réponses ne sont sauvegardées qu'en local pour les tests. Pour la mise en ligne, Google Sheets doit être configuré.
+
 ## Démarrage local
 
 ```bash
 cd "/Users/christophe/Desktop/HP Psy France/Data/tnd_questionnaire"
 python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements-django.txt
 .venv/bin/python manage.py migrate
 .venv/bin/python manage.py import_myhcl_docx --reset
 .venv/bin/python manage.py createsuperuser
