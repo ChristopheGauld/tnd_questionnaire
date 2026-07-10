@@ -1,6 +1,6 @@
-# myHCL TND - questionnaire Streamlit
+# TND - questionnaire Streamlit
 
-Application Streamlit pour diffuser le questionnaire myHCL TND par lien public, enregistrer les réponses dans Google Sheets et exporter les données en Excel.
+Application Streamlit pour diffuser le questionnaire TND par lien public.
 
 ## Déploiement Streamlit Cloud
 
