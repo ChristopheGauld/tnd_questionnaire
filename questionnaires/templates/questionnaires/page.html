@@ -1,0 +1,89 @@
+{% extends "questionnaires/base.html" %}
+{% load questionnaire_extras %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block content %}
+  <section class="panel">
+    <p class="muted">Page {{ page_position }} / {{ page_count }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.instructions %}
+      <div class="intro">{{ page.instructions }}</div>
+    {% endif %}
+    <div class="progress" aria-hidden="true">
+      <span style="width: {% widthratio page_position page_count 100 %}%"></span>
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      {% if page_position == 1 %}
+        <div class="question">
+          <label class="prompt" for="participant_code">Identifiant participant</label>
+          <input id="participant_code" name="participant_code" type="text" value="{{ response.participant_code }}">
+        </div>
+      {% endif %}
+
+      {% for question in questions %}
+        {% with current=existing|get_item:question.id %}
+          <div class="question">
+            {% if question.question_type == "display" %}
+              <div class="intro">{{ question.prompt }}</div>
+            {% else %}
+              <label class="prompt" for="q_{{ question.id }}">
+                {{ question.prompt }}{% if question.required %} *{% endif %}
+              </label>
+              {% if question.help_text %}
+                <div class="help">{{ question.help_text }}</div>
+              {% endif %}
+
+              {% if question.question_type == "textarea" %}
+                <textarea id="q_{{ question.id }}" name="q_{{ question.id }}">{{ current }}</textarea>
+              {% elif question.question_type == "number" %}
+                <input id="q_{{ question.id }}" name="q_{{ question.id }}" type="number" step="any" value="{{ current }}">
+              {% elif question.question_type == "date" %}
+                <input id="q_{{ question.id }}" name="q_{{ question.id }}" type="date" value="{{ current }}">
+              {% elif question.question_type == "email" %}
+                <input id="q_{{ question.id }}" name="q_{{ question.id }}" type="email" value="{{ current }}">
+              {% elif question.question_type == "phone" %}
+                <input id="q_{{ question.id }}" name="q_{{ question.id }}" type="tel" value="{{ current }}">
+              {% elif question.question_type == "single" or question.question_type == "scale" %}
+                <div class="choices">
+                  {% for option in question.options.all %}
+                    <label class="choice">
+                      <input type="radio" name="q_{{ question.id }}" value="{{ option.value }}" {% if current == option.value %}checked{% endif %}>
+                      <span>{{ option.label }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              {% elif question.question_type == "multiple" %}
+                <div class="choices">
+                  {% for option in question.options.all %}
+                    <label class="choice">
+                      <input type="checkbox" name="q_{{ question.id }}" value="{{ option.value }}" {% if current|contains:option.value %}checked{% endif %}>
+                      <span>{{ option.label }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <input id="q_{{ question.id }}" name="q_{{ question.id }}" type="text" value="{{ current }}">
+              {% endif %}
+
+              {% if errors|get_item:question.id %}
+                <div class="error">{{ errors|get_item:question.id }}</div>
+              {% endif %}
+            {% endif %}
+          </div>
+        {% endwith %}
+      {% endfor %}
+
+      <div class="actions">
+        {% if previous_page %}
+          <a class="button secondary" href="{% url 'questionnaire_page' questionnaire.public_id previous_page.order %}?r={{ response.token }}">Retour</a>
+        {% else %}
+          <span></span>
+        {% endif %}
+        <button class="button" type="submit">{{ next_label }}</button>
+      </div>
+    </form>
+  </section>
+{% endblock %}

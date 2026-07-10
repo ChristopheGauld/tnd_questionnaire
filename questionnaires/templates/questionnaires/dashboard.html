@@ -1,0 +1,32 @@
+{% extends "questionnaires/base.html" %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block topbar %}
+  <a href="{% url 'admin:index' %}">Administration</a>
+{% endblock %}
+
+{% block content %}
+  <section class="panel">
+    <h1>Tableau de bord</h1>
+    <p class="muted">Questionnaires, liens publics et exports.</p>
+
+    <div class="grid">
+      {% for questionnaire in questionnaires %}
+        <article class="item">
+          <h2>{{ questionnaire.title }}</h2>
+          <p class="muted">{{ questionnaire.pages.count }} pages · {{ questionnaire.responses.count }} réponses</p>
+          <p>
+            <a href="{{ questionnaire.get_public_url }}">{{ request.scheme }}://{{ request.get_host }}{{ questionnaire.get_public_url }}</a>
+          </p>
+          <div class="item-actions">
+            <a class="button" href="{% url 'export_xlsx' questionnaire.id %}">Télécharger Excel</a>
+            <a class="button secondary" href="{% url 'admin:questionnaires_questionnaire_change' questionnaire.id %}">Modifier</a>
+          </div>
+        </article>
+      {% empty %}
+        <p>Aucun questionnaire.</p>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

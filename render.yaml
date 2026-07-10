@@ -1,0 +1,24 @@
+databases:
+  - name: myhcl-tnd-db
+    plan: basic-256mb
+
+services:
+  - type: web
+    name: myhcl-tnd
+    runtime: python
+    plan: starter
+    buildCommand: ./build.sh
+    startCommand: gunicorn config.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_ADMIN_URL
+        value: admin-prive/
+      - key: DATABASE_URL
+        fromDatabase:
+          name: myhcl-tnd-db
+          property: connectionString
