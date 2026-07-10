@@ -1,20 +1,16 @@
 from __future__ import annotations
 
 import csv
+import html
 import json
 import os
 import uuid
 from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
+from zipfile import ZIP_DEFLATED, ZipFile
 
-import pandas as pd
 import streamlit as st
-
-try:
-    import gspread
-except Exception:  # pragma: no cover - optional on local installs
-    gspread = None
 
 
 APP_DIR = Path(__file__).resolve().parent
@@ -206,9 +202,10 @@ def secrets_file_exists() -> bool:
 
 
 def google_client():
-    if gspread is None:
-        return None
     if not secrets_file_exists():
+        return None
+    gspread = import_gspread()
+    if gspread is None:
         return None
     try:
         account_info = dict(st.secrets["google_service_account"])
@@ -223,8 +220,9 @@ def google_client():
 
 def google_worksheet():
     sheet_id = get_secret("GOOGLE_SHEET_ID")
+    gspread = import_gspread()
     client = google_client()
-    if not sheet_id or client is None:
+    if not sheet_id or client is None or gspread is None:
         return None
     try:
         spreadsheet = client.open_by_key(sheet_id)
@@ -235,6 +233,14 @@ def google_worksheet():
     except Exception as exc:
         st.error(f"Connexion Google Sheets impossible : {exc}")
         return None
+
+
+def import_gspread():
+    try:
+        import gspread
+    except Exception:
+        return None
+    return gspread
 
 
 def all_questions(data: dict) -> list[dict]:
@@ -297,22 +303,109 @@ def save_google(row: dict, headers: list[str]) -> bool:
     return True
 
 
-def load_responses(data: dict) -> pd.DataFrame:
+def load_responses(data: dict) -> list[dict]:
     headers = export_headers(data)
     worksheet = google_worksheet()
     if worksheet is not None:
-        rows = worksheet.get_all_records()
-        return pd.DataFrame(rows, columns=headers)
+        return normalize_rows(worksheet.get_all_records(), headers)
     if LOCAL_RESPONSES.exists():
-        return pd.read_csv(LOCAL_RESPONSES)
-    return pd.DataFrame(columns=headers)
+        with LOCAL_RESPONSES.open("r", newline="", encoding="utf-8") as file:
+            return normalize_rows(list(csv.DictReader(file)), headers)
+    return []
 
 
-def dataframe_to_xlsx(df: pd.DataFrame) -> bytes:
+def normalize_rows(rows: list[dict], headers: list[str]) -> list[dict]:
+    return [{header: row.get(header, "") for header in headers} for row in rows]
+
+
+def rows_to_xlsx(headers: list[str], rows: list[dict]) -> bytes:
     buffer = BytesIO()
-    with pd.ExcelWriter(buffer, engine="openpyxl") as writer:
-        df.to_excel(writer, index=False, sheet_name="Réponses")
+    sheet_rows = [headers] + [[row.get(header, "") for header in headers] for row in rows]
+    sheet_xml = build_sheet_xml(sheet_rows)
+    timestamp = datetime.now(timezone.utc).isoformat()
+
+    with ZipFile(buffer, "w", ZIP_DEFLATED) as xlsx:
+        xlsx.writestr(
+            "[Content_Types].xml",
+            """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>
+  <Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+</Types>""",
+        )
+        xlsx.writestr(
+            "_rels/.rels",
+            """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>
+  <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/>
+</Relationships>""",
+        )
+        xlsx.writestr(
+            "docProps/app.xml",
+            """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
+  <Application>myHCL TND Streamlit</Application>
+</Properties>""",
+        )
+        xlsx.writestr(
+            "docProps/core.xml",
+            f"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcmitype="http://purl.org/dc/dcmitype/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Réponses myHCL TND</dc:title>
+  <dcterms:created xsi:type="dcterms:W3CDTF">{timestamp}</dcterms:created>
+</cp:coreProperties>""",
+        )
+        xlsx.writestr(
+            "xl/workbook.xml",
+            """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets>
+    <sheet name="Réponses" sheetId="1" r:id="rId1"/>
+  </sheets>
+</workbook>""",
+        )
+        xlsx.writestr(
+            "xl/_rels/workbook.xml.rels",
+            """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
+</Relationships>""",
+        )
+        xlsx.writestr("xl/worksheets/sheet1.xml", sheet_xml)
     return buffer.getvalue()
+
+
+def build_sheet_xml(rows: list[list[object]]) -> str:
+    xml_rows = []
+    for row_index, row in enumerate(rows, start=1):
+        cells = []
+        for col_index, value in enumerate(row, start=1):
+            ref = f"{column_name(col_index)}{row_index}"
+            text = html.escape("" if value is None else str(value), quote=False)
+            cells.append(f'<c r="{ref}" t="inlineStr"><is><t>{text}</t></is></c>')
+        xml_rows.append(f'<row r="{row_index}">{"".join(cells)}</row>')
+    return (
+        '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+        '<sheetData>'
+        f'{"".join(xml_rows)}'
+        '</sheetData>'
+        '</worksheet>'
+    )
+
+
+def column_name(index: int) -> str:
+    name = ""
+    while index:
+        index, remainder = divmod(index - 1, 26)
+        name = chr(65 + remainder) + name
+    return name
 
 
 def init_state() -> None:
@@ -478,12 +571,13 @@ def admin_app(data: dict) -> None:
         st.info("Saisir le mot de passe admin pour afficher les réponses.")
         return
 
-    df = load_responses(data)
-    st.metric("Réponses", len(df))
-    st.dataframe(df, use_container_width=True, hide_index=True)
+    headers = export_headers(data)
+    rows = load_responses(data)
+    st.metric("Réponses", len(rows))
+    st.dataframe(rows, use_container_width=True, hide_index=True)
     st.download_button(
         "Télécharger Excel",
-        data=dataframe_to_xlsx(df),
+        data=rows_to_xlsx(headers, rows),
         file_name="myhcl_tnd_reponses.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         use_container_width=True,
