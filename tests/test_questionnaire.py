@@ -58,8 +58,8 @@ class FormbricksApiTests(unittest.TestCase):
     def test_workspace_is_detected_from_api_key(self, urlopen: MagicMock) -> None:
         response = MagicMock()
         response.read.return_value = (
-            b'{"organizationId":"org-123","workspaces":['
-            b'{"workspaceId":"workspace-123","projectName":"TND"}]}'
+            b'{"data":{"organizationId":"org-123","workspacePermissions":['
+            b'{"workspaceId":"workspace-123","workspaceName":"TND","permissions":"manage"}]}}'
         )
         urlopen.return_value.__enter__.return_value = response
 

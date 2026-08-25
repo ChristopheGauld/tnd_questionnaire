@@ -73,13 +73,15 @@ def get_workspace_id(base_url: str, api_key: str) -> str:
     )
     result = request_json(request)
     data = result.get("data", result)
-    workspaces = data.get("workspaces", []) if isinstance(data, dict) else []
+    workspaces = data.get("workspacePermissions", []) if isinstance(data, dict) else []
     if not workspaces and isinstance(data, dict):
-        workspaces = data.get("environments", [])
+        workspaces = data.get("workspaces", [])
+    if not workspaces and isinstance(data, dict):
+        workspaces = data.get("environmentPermissions", []) or data.get("environments", [])
 
     unique_workspaces: dict[str, dict] = {}
     for workspace in workspaces:
-        workspace_id = workspace.get("workspaceId")
+        workspace_id = workspace.get("workspaceId") or workspace.get("projectId")
         if workspace_id:
             unique_workspaces[workspace_id] = workspace
 
@@ -91,7 +93,7 @@ def get_workspace_id(base_url: str, api_key: str) -> str:
     choices = list(unique_workspaces.items())
     print("Plusieurs workspaces sont accessibles :")
     for index, (_, workspace) in enumerate(choices, start=1):
-        name = workspace.get("projectName") or workspace.get("workspaceId")
+        name = workspace.get("workspaceName") or workspace.get("projectName") or workspace.get("workspaceId")
         print(f"  {index}. {name}")
 
     while True:
