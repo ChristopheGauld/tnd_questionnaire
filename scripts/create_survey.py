@@ -16,6 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
+USER_AGENT = "tnd-questionnaire-import/1.0"
 
 from questionnaire.formbricks_payload import (  # noqa: E402
     DUMMY_WORKSPACE_ID,
@@ -52,6 +53,8 @@ def get_ssl_context() -> ssl.SSLContext:
 
 
 def request_json(request: urllib.request.Request) -> dict:
+    request.add_header("Accept", "application/json")
+    request.add_header("User-Agent", USER_AGENT)
     try:
         with urllib.request.urlopen(request, timeout=60, context=get_ssl_context()) as response:
             return json.loads(response.read().decode("utf-8"))
@@ -64,7 +67,7 @@ def request_json(request: urllib.request.Request) -> dict:
 
 def get_workspace_id(base_url: str, api_key: str) -> str:
     request = urllib.request.Request(
-        f"{base_url.rstrip('/')}/api/v1/me",
+        f"{base_url.rstrip('/')}/api/v1/management/me",
         headers={"x-api-key": api_key},
         method="GET",
     )

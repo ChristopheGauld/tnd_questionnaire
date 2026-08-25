@@ -64,8 +64,9 @@ class FormbricksApiTests(unittest.TestCase):
 
         self.assertEqual(workspace_id, "workspace-123")
         request = urlopen.call_args.args[0]
-        self.assertEqual(request.full_url, "https://app.formbricks.com/api/v1/me")
+        self.assertEqual(request.full_url, "https://app.formbricks.com/api/v1/management/me")
         self.assertEqual(request.get_header("X-api-key"), "secret-key")
+        self.assertEqual(request.get_header("User-agent"), "tnd-questionnaire-import/1.0")
         self.assertIsNotNone(urlopen.call_args.kwargs["context"])
 
 
