@@ -21,21 +21,22 @@ parent compatible avec la version stable actuelle de Formbricks.
 1. Créer un espace sur [Formbricks Cloud](https://app.formbricks.com).
 2. Dans les paramètres de l'organisation, ouvrir **API Keys** et créer une clé
    avec un accès en écriture au workspace concerné.
-3. Copier `.env.example` vers `.env` et renseigner la clé et le workspace ID.
-4. Charger les variables puis créer le questionnaire :
+3. Créer le questionnaire en brouillon avec la commande suivante :
 
 ```bash
-set -a
-source .env
-set +a
-python3 scripts/create_survey.py --upload --publish
+python3 scripts/create_survey.py --upload
 ```
 
-Le script affiche le lien public final. Il contient
-`?offlineSupport=true` pour activer la reprise de progression.
+La commande demande la clé dans le terminal sans l'afficher. Elle vérifie la
+clé, détecte automatiquement le workspace et crée le questionnaire en
+brouillon. La clé n'est pas enregistrée.
 
-Pour créer d'abord un brouillon à relire dans l'interface d'administration,
-retirer simplement `--publish`.
+Après relecture dans l'interface d'administration, publier le questionnaire
+depuis Formbricks. Le lien public doit conserver `?offlineSupport=true` pour
+activer la reprise de progression.
+
+Pour une utilisation automatisée, les variables facultatives
+`FORMBRICKS_API_KEY` et `FORMBRICKS_WORKSPACE_ID` restent prises en charge.
 
 ## Générer et contrôler le JSON
 

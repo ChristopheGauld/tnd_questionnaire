@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import getpass
 import json
 import os
 import sys
@@ -38,6 +39,32 @@ def write_payload(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def request_json(request: urllib.request.Request) -> dict:
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as error:
+        detail = error.read().decode("utf-8", errors="replace")
+        raise SystemExit(f"Formbricks a refuse la requete ({error.code}) :\n{detail}") from error
+    except urllib.error.URLError as error:
+        raise SystemExit(f"Impossible de joindre Formbricks : {error.reason}") from error
+
+
+def get_workspace_id(base_url: str, api_key: str) -> str:
+    request = urllib.request.Request(
+        f"{base_url.rstrip('/')}/api/v1/me",
+        headers={"x-api-key": api_key},
+        method="GET",
+    )
+    result = request_json(request)
+    data = result.get("data", result)
+    workspace = data.get("workspace", {}) if isinstance(data, dict) else {}
+    workspace_id = workspace.get("id") if isinstance(workspace, dict) else None
+    if not workspace_id:
+        raise SystemExit("Cle valide, mais identifiant du workspace introuvable dans la reponse Formbricks.")
+    return workspace_id
+
+
 def upload_payload(base_url: str, api_key: str, payload: dict) -> dict:
     endpoint = f"{base_url.rstrip('/')}/api/v3/surveys?createdFrom=blank"
     request = urllib.request.Request(
@@ -46,19 +73,24 @@ def upload_payload(base_url: str, api_key: str, payload: dict) -> dict:
         headers={"Content-Type": "application/json", "x-api-key": api_key},
         method="POST",
     )
-    try:
-        with urllib.request.urlopen(request, timeout=60) as response:
-            return json.loads(response.read().decode("utf-8"))
-    except urllib.error.HTTPError as error:
-        detail = error.read().decode("utf-8", errors="replace")
-        raise SystemExit(f"Formbricks a refuse la creation ({error.code}) :\n{detail}") from error
-    except urllib.error.URLError as error:
-        raise SystemExit(f"Impossible de joindre Formbricks : {error.reason}") from error
+    return request_json(request)
 
 
 def main() -> None:
     args = parse_args()
-    workspace_id = args.workspace_id or DUMMY_WORKSPACE_ID
+    api_key = args.api_key
+    workspace_id = args.workspace_id
+
+    if args.upload:
+        if not api_key:
+            api_key = getpass.getpass("Collez la cle API Formbricks (elle restera masquee) : ").strip()
+        if not api_key:
+            raise SystemExit("Une cle API Formbricks est requise pour creer le questionnaire.")
+        if not workspace_id:
+            print("Verification de la cle et detection du workspace...")
+            workspace_id = get_workspace_id(args.base_url, api_key)
+
+    workspace_id = workspace_id or DUMMY_WORKSPACE_ID
     payload = build_payload(workspace_id, publish=args.publish)
 
     if args.output:
@@ -69,12 +101,8 @@ def main() -> None:
 
     if not args.upload:
         return
-    if not args.workspace_id:
-        raise SystemExit("FORMBRICKS_WORKSPACE_ID ou --workspace-id est requis pour --upload.")
-    if not args.api_key:
-        raise SystemExit("FORMBRICKS_API_KEY ou --api-key est requis pour --upload.")
 
-    result = upload_payload(args.base_url, args.api_key, payload)
+    result = upload_payload(args.base_url, api_key, payload)
     data = result.get("data", result)
     survey_id = data.get("id") if isinstance(data, dict) else None
     if not survey_id:
@@ -83,9 +111,11 @@ def main() -> None:
 
     public_url = f"{args.base_url.rstrip('/')}/s/{survey_id}?offlineSupport=true"
     print(f"Questionnaire cree : {survey_id}")
-    print(f"Lien public avec reprise de progression : {public_url}")
+    if args.publish:
+        print(f"Lien public avec reprise de progression : {public_url}")
+    else:
+        print("Le questionnaire est en brouillon. Relisez-le dans Formbricks avant de le publier.")
 
 
 if __name__ == "__main__":
     main()
-
