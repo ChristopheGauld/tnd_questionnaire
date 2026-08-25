@@ -29,7 +29,8 @@ python3 scripts/create_survey.py --upload
 
 La commande demande la clé dans le terminal sans l'afficher. Elle vérifie la
 clé, détecte automatiquement le workspace et crée le questionnaire en
-brouillon. La clé n'est pas enregistrée.
+brouillon. La clé n'est pas enregistrée. Le script utilise le paquet `certifi`
+lorsqu'il est disponible pour valider correctement les connexions HTTPS.
 
 Après relecture dans l'interface d'administration, publier le questionnaire
 depuis Formbricks. Le lien public doit conserver `?offlineSupport=true` pour

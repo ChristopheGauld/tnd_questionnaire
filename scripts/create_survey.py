@@ -7,6 +7,7 @@ import argparse
 import getpass
 import json
 import os
+import ssl
 import sys
 import urllib.error
 import urllib.request
@@ -21,6 +22,11 @@ from questionnaire.formbricks_payload import (  # noqa: E402
     build_payload,
     logical_question_count,
 )
+
+try:
+    import certifi
+except ImportError:  # pragma: no cover - depends on the local Python installation
+    certifi = None
 
 
 def parse_args() -> argparse.Namespace:
@@ -39,9 +45,15 @@ def write_payload(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def get_ssl_context() -> ssl.SSLContext:
+    if certifi is not None:
+        return ssl.create_default_context(cafile=certifi.where())
+    return ssl.create_default_context()
+
+
 def request_json(request: urllib.request.Request) -> dict:
     try:
-        with urllib.request.urlopen(request, timeout=60) as response:
+        with urllib.request.urlopen(request, timeout=60, context=get_ssl_context()) as response:
             return json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as error:
         detail = error.read().decode("utf-8", errors="replace")

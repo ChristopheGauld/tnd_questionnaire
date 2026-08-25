@@ -66,6 +66,7 @@ class FormbricksApiTests(unittest.TestCase):
         request = urlopen.call_args.args[0]
         self.assertEqual(request.full_url, "https://app.formbricks.com/api/v1/me")
         self.assertEqual(request.get_header("X-api-key"), "secret-key")
+        self.assertIsNotNone(urlopen.call_args.kwargs["context"])
 
 
 if __name__ == "__main__":
