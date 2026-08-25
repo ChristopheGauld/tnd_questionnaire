@@ -31,6 +31,8 @@ La commande demande la clé dans le terminal sans l'afficher. Elle vérifie la
 clé, détecte automatiquement le workspace et crée le questionnaire en
 brouillon. La clé n'est pas enregistrée. Le script utilise le paquet `certifi`
 lorsqu'il est disponible pour valider correctement les connexions HTTPS.
+Si la clé donne accès à plusieurs workspaces, la commande propose un choix
+numéroté.
 
 Après relecture dans l'interface d'administration, publier le questionnaire
 depuis Formbricks. Le lien public doit conserver `?offlineSupport=true` pour

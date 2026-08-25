@@ -67,17 +67,38 @@ def request_json(request: urllib.request.Request) -> dict:
 
 def get_workspace_id(base_url: str, api_key: str) -> str:
     request = urllib.request.Request(
-        f"{base_url.rstrip('/')}/api/v1/management/me",
+        f"{base_url.rstrip('/')}/api/v2/me",
         headers={"x-api-key": api_key},
         method="GET",
     )
     result = request_json(request)
     data = result.get("data", result)
-    workspace = data.get("workspace", {}) if isinstance(data, dict) else {}
-    workspace_id = workspace.get("id") if isinstance(workspace, dict) else None
-    if not workspace_id:
-        raise SystemExit("Cle valide, mais identifiant du workspace introuvable dans la reponse Formbricks.")
-    return workspace_id
+    workspaces = data.get("workspaces", []) if isinstance(data, dict) else []
+    if not workspaces and isinstance(data, dict):
+        workspaces = data.get("environments", [])
+
+    unique_workspaces: dict[str, dict] = {}
+    for workspace in workspaces:
+        workspace_id = workspace.get("workspaceId")
+        if workspace_id:
+            unique_workspaces[workspace_id] = workspace
+
+    if not unique_workspaces:
+        raise SystemExit("Cle valide, mais aucun workspace accessible n'a ete trouve dans Formbricks.")
+    if len(unique_workspaces) == 1:
+        return next(iter(unique_workspaces))
+
+    choices = list(unique_workspaces.items())
+    print("Plusieurs workspaces sont accessibles :")
+    for index, (_, workspace) in enumerate(choices, start=1):
+        name = workspace.get("projectName") or workspace.get("workspaceId")
+        print(f"  {index}. {name}")
+
+    while True:
+        selection = input("Numero du workspace a utiliser : ").strip()
+        if selection.isdigit() and 1 <= int(selection) <= len(choices):
+            return choices[int(selection) - 1][0]
+        print("Choix invalide.")
 
 
 def upload_payload(base_url: str, api_key: str, payload: dict) -> dict:

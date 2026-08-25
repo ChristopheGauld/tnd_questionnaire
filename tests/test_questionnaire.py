@@ -57,14 +57,17 @@ class FormbricksApiTests(unittest.TestCase):
     @patch("scripts.create_survey.urllib.request.urlopen")
     def test_workspace_is_detected_from_api_key(self, urlopen: MagicMock) -> None:
         response = MagicMock()
-        response.read.return_value = b'{"workspace":{"id":"workspace-123","name":"TND"}}'
+        response.read.return_value = (
+            b'{"organizationId":"org-123","workspaces":['
+            b'{"workspaceId":"workspace-123","projectName":"TND"}]}'
+        )
         urlopen.return_value.__enter__.return_value = response
 
         workspace_id = get_workspace_id("https://app.formbricks.com", "secret-key")
 
         self.assertEqual(workspace_id, "workspace-123")
         request = urlopen.call_args.args[0]
-        self.assertEqual(request.full_url, "https://app.formbricks.com/api/v1/management/me")
+        self.assertEqual(request.full_url, "https://app.formbricks.com/api/v2/me")
         self.assertEqual(request.get_header("X-api-key"), "secret-key")
         self.assertEqual(request.get_header("User-agent"), "tnd-questionnaire-import/1.0")
         self.assertIsNotNone(urlopen.call_args.kwargs["context"])
