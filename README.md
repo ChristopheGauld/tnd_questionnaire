@@ -1,65 +1,63 @@
-# TND - questionnaire Streamlit
+# myHCL TND sur Formbricks
 
-Application Streamlit pour diffuser le questionnaire TND par lien public.
+Ce dépôt transforme `myHCL_TND_courte_FORMBRICKS.docx` en un questionnaire
+parent compatible avec la version stable actuelle de Formbricks.
 
-## Déploiement Streamlit Cloud
+## Ce qui est inclus
 
-Dans Streamlit Community Cloud :
+- 255 questions logiques réparties en 19 sections ;
+- toutes les questions sont obligatoires ;
+- une réponse est exigée pour chaque ligne des matrices ;
+- les formulations à la première personne ont été adaptées pour que le parent
+  réponde au sujet de son enfant ;
+- les mentions « À remplir par le parent » ont été retirées ;
+- chaque section utilise le bouton « Enregistrer et continuer » ;
+- Formbricks conserve une réponse partielle après chaque section ;
+- le lien public active aussi la reprise locale pendant 24 heures sur le même
+  appareil et dans le même navigateur.
 
-1. Choisir le dépôt GitHub `ChristopheGauld/tnd_questionnaire`.
-2. Choisir la branche `main`.
-3. Choisir le fichier principal `streamlit_app.py`.
-4. Ajouter les secrets.
-5. Déployer.
+## Créer le questionnaire en ligne
 
-Secrets minimaux :
-
-```toml
-ADMIN_PASSWORD = "mot-de-passe-a-changer"
-```
-
-Secrets Google Sheets pour conserver les réponses en ligne :
-
-```toml
-GOOGLE_SHEET_ID = "id-du-google-sheet"
-
-[google_service_account]
-type = "service_account"
-project_id = "..."
-private_key_id = "..."
-private_key = "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-client_email = "..."
-client_id = "..."
-auth_uri = "https://accounts.google.com/o/oauth2/auth"
-token_uri = "https://oauth2.googleapis.com/token"
-auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs"
-client_x509_cert_url = "..."
-```
-
-Partager ensuite le Google Sheet avec le `client_email` du compte de service en droit édition.
-
-## Accès
-
-- Questionnaire public : URL Streamlit normale.
-- Administration : ajouter `?mode=admin` à la fin de l'URL.
-
-Sans Google Sheets configuré, les réponses ne sont sauvegardées qu'en local pour les tests.
-
-## Lancement local
+1. Créer un espace sur [Formbricks Cloud](https://app.formbricks.com).
+2. Dans les paramètres de l'organisation, ouvrir **API Keys** et créer une clé
+   avec un accès en écriture au workspace concerné.
+3. Copier `.env.example` vers `.env` et renseigner la clé et le workspace ID.
+4. Charger les variables puis créer le questionnaire :
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/streamlit run streamlit_app.py
+set -a
+source .env
+set +a
+python3 scripts/create_survey.py --upload --publish
 ```
 
-## Fichiers principaux
+Le script affiche le lien public final. Il contient
+`?offlineSupport=true` pour activer la reprise de progression.
 
-- `streamlit_app.py` : application Streamlit.
-- `questionnaire_data.json` : contenu du questionnaire.
-- `requirements.txt` : dépendances Streamlit Cloud.
-- `.streamlit/config.toml` : thème visuel.
+Pour créer d'abord un brouillon à relire dans l'interface d'administration,
+retirer simplement `--publish`.
 
-## Note données sensibles
+## Générer et contrôler le JSON
 
-Pour un usage médical/recherche réel, vérifier le cadre RGPD, le consentement, la durée de conservation, les accès au Google Sheet et l'hébergement avant diffusion large.
+```bash
+python3 scripts/create_survey.py --output formbricks_survey.json
+python3 -m unittest discover -s tests -v
+```
+
+Le JSON généré utilise un workspace fictif tant que `FORMBRICKS_WORKSPACE_ID`
+n'est pas défini. Ne pas l'envoyer tel quel à l'API.
+
+## Accès et données
+
+Le lien du questionnaire est public. L'administration et les résultats restent
+derrière le compte Formbricks. Le champ caché `participant_id` permet d'ajouter
+un identifiant dans le lien, par exemple :
+
+`https://app.formbricks.com/s/ID_DU_QUESTIONNAIRE?offlineSupport=true&participant_id=P001`
+
+Avant une diffusion clinique ou de recherche, vérifier la base légale, le
+consentement, l'information des participants, la durée de conservation, les
+droits d'accès et les licences des échelles. Transformer une échelle
+auto-rapportée en hétéro-questionnaire peut modifier ses propriétés
+psychométriques ; les formulations adaptées doivent donc être validées par
+l'équipe clinique ou scientifique.

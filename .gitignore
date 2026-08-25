@@ -1,9 +1,5 @@
-.venv/
+.DS_Store
+.env
 __pycache__/
 *.py[cod]
-db.sqlite3
-media/
-staticfiles/
-responses/
-.env
-.DS_Store
+.pytest_cache/

@@ -1,0 +1,3427 @@
+{
+  "workspaceId": "c00000000000000000000000",
+  "name": "myHCL TND - questionnaire parent",
+  "type": "link",
+  "status": "draft",
+  "metadata": {
+    "title": {
+      "fr-FR": "myHCL TND - questionnaire parent"
+    },
+    "description": {
+      "fr-FR": "Questionnaires sur le neurodéveloppement, renseignés par un parent au sujet de son enfant."
+    }
+  },
+  "defaultLanguage": "fr-FR",
+  "languages": [
+    {
+      "code": "fr-FR",
+      "default": true,
+      "enabled": true
+    }
+  ],
+  "welcomeCard": {
+    "enabled": true,
+    "headline": {
+      "fr-FR": "Questionnaire myHCL TND"
+    },
+    "subheader": {
+      "fr-FR": "Merci de prendre ce temps pour votre enfant. Avancez à votre rythme : chaque section validée est enregistrée avant de passer à la suivante. Vous pouvez faire une pause entre deux sections et reprendre avec le même lien et le même navigateur pendant 24 heures. Ce recueil ne fournit pas de diagnostic et ne remplace pas l'évaluation d'un professionnel."
+    },
+    "buttonLabel": {
+      "fr-FR": "Commencer"
+    },
+    "timeToFinish": false,
+    "showResponseCount": false
+  },
+  "blocks": [
+    {
+      "name": "Identification et informations générales",
+      "elements": [
+        {
+          "id": "ident_nom",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Nom de l'enfant"
+          },
+          "required": true,
+          "inputType": "text",
+          "longAnswer": false,
+          "subheader": {
+            "fr-FR": "Commencez par les informations concernant l'enfant ou l'adolescent. Toutes les réponses sont nécessaires pour valider cette première section."
+          }
+        },
+        {
+          "id": "ident_prenom",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Prénom de l'enfant"
+          },
+          "required": true,
+          "inputType": "text",
+          "longAnswer": false
+        },
+        {
+          "id": "ident_genre",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "Avec quel genre votre enfant souhaite-t-il se définir ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "ident_genre_c1",
+              "label": {
+                "fr-FR": "Masculin"
+              }
+            },
+            {
+              "id": "ident_genre_c2",
+              "label": {
+                "fr-FR": "Féminin"
+              }
+            },
+            {
+              "id": "ident_genre_c3",
+              "label": {
+                "fr-FR": "Autre"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "ident_naissance",
+          "type": "date",
+          "headline": {
+            "fr-FR": "Date de naissance de l'enfant"
+          },
+          "required": true,
+          "format": "d-M-y"
+        },
+        {
+          "id": "ident_taille",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Taille de l'enfant en centimètres"
+          },
+          "required": true,
+          "inputType": "number",
+          "longAnswer": false
+        },
+        {
+          "id": "ident_poids",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Poids de l'enfant en kilogrammes"
+          },
+          "required": true,
+          "inputType": "number",
+          "longAnswer": false
+        },
+        {
+          "id": "ident_ville",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Ville de résidence de l'enfant"
+          },
+          "required": true,
+          "inputType": "text",
+          "longAnswer": false
+        },
+        {
+          "id": "ident_antecedents_familiaux",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Existe-t-il des pathologies notables dans la famille ?"
+          },
+          "required": true,
+          "inputType": "text",
+          "longAnswer": true,
+          "placeholder": {
+            "fr-FR": "Décrivez brièvement les antécédents familiaux."
+          }
+        },
+        {
+          "id": "ident_antecedents_enfant",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Votre enfant a-t-il des antécédents notables concernant sa scolarité, son développement, l'acquisition de la marche, du langage ou de la propreté, ou concernant un trouble psychologique, psychiatrique ou médical ?"
+          },
+          "required": true,
+          "inputType": "text",
+          "longAnswer": true
+        },
+        {
+          "id": "ident_ecrans_semaine",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Combien d'heures par jour votre enfant passe-t-il en moyenne devant les écrans pendant la semaine d'école ?"
+          },
+          "required": true,
+          "inputType": "number",
+          "longAnswer": false
+        },
+        {
+          "id": "ident_ecrans_weekend",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Combien d'heures par jour votre enfant passe-t-il en moyenne devant les écrans le week-end ou pendant les vacances ?"
+          },
+          "required": true,
+          "inputType": "number",
+          "longAnswer": false
+        },
+        {
+          "id": "ident_prise_en_charge",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Votre enfant bénéficie-t-il de prises en charge en orthophonie, psychomotricité, ergothérapie, psychologie ou psychiatrie ?"
+          },
+          "required": true,
+          "inputType": "text",
+          "longAnswer": true
+        },
+        {
+          "id": "ident_traitements",
+          "type": "openText",
+          "headline": {
+            "fr-FR": "Votre enfant prend-il actuellement des traitements médicamenteux ?"
+          },
+          "required": true,
+          "inputType": "text",
+          "longAnswer": true
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Questionnaire abrégé de Conners",
+      "elements": [
+        {
+          "id": "conners",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Questionnaire abrégé de Conners"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "conners_r1",
+              "label": {
+                "fr-FR": "L'enfant est agité ou très actif."
+              }
+            },
+            {
+              "id": "conners_r2",
+              "label": {
+                "fr-FR": "L'enfant est nerveux ou impulsif."
+              }
+            },
+            {
+              "id": "conners_r3",
+              "label": {
+                "fr-FR": "L'enfant ne finit pas ce qu'il a commencé et son attention est de courte durée."
+              }
+            },
+            {
+              "id": "conners_r4",
+              "label": {
+                "fr-FR": "L'enfant est toujours remuant."
+              }
+            },
+            {
+              "id": "conners_r5",
+              "label": {
+                "fr-FR": "L'enfant perturbe les autres enfants."
+              }
+            },
+            {
+              "id": "conners_r6",
+              "label": {
+                "fr-FR": "L'enfant est inattentif et facilement distrait."
+              }
+            },
+            {
+              "id": "conners_r7",
+              "label": {
+                "fr-FR": "Ses demandes doivent être immédiatement satisfaites et il est facilement frustré."
+              }
+            },
+            {
+              "id": "conners_r8",
+              "label": {
+                "fr-FR": "L'enfant pleure souvent et facilement."
+              }
+            },
+            {
+              "id": "conners_r9",
+              "label": {
+                "fr-FR": "L'enfant a des changements d'humeur rapides et marqués."
+              }
+            },
+            {
+              "id": "conners_r10",
+              "label": {
+                "fr-FR": "L'enfant a des accès de colère, avec un comportement explosif et imprévisible."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "conners_c1",
+              "label": {
+                "fr-FR": "Pas du tout"
+              }
+            },
+            {
+              "id": "conners_c2",
+              "label": {
+                "fr-FR": "Un petit peu"
+              }
+            },
+            {
+              "id": "conners_c3",
+              "label": {
+                "fr-FR": "Beaucoup"
+              }
+            },
+            {
+              "id": "conners_c4",
+              "label": {
+                "fr-FR": "Énormément"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "conners_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Pensez au comportement habituel de votre enfant au cours des six derniers mois. Sélectionnez une réponse pour chaque ligne."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle de TDAH SNAP-IV - partie 1/2",
+      "elements": [
+        {
+          "id": "snap_1",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle de TDAH SNAP-IV - partie 1/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "snap_1_r1",
+              "label": {
+                "fr-FR": "1. Souvent, votre enfant ne parvient pas à prêter attention aux détails ou commet des fautes d'étourderie dans ses travaux scolaires."
+              }
+            },
+            {
+              "id": "snap_1_r2",
+              "label": {
+                "fr-FR": "2. Votre enfant a souvent de la difficulté à soutenir son attention dans les tâches ou dans les jeux."
+              }
+            },
+            {
+              "id": "snap_1_r3",
+              "label": {
+                "fr-FR": "3. Votre enfant semble souvent ne pas écouter lorsqu'on lui parle personnellement."
+              }
+            },
+            {
+              "id": "snap_1_r4",
+              "label": {
+                "fr-FR": "4. Souvent, votre enfant ne se conforme pas aux consignes et ne parvient pas à terminer ses travaux scolaires."
+              }
+            },
+            {
+              "id": "snap_1_r5",
+              "label": {
+                "fr-FR": "5. Votre enfant a souvent de la difficulté à organiser ses tâches ou ses activités."
+              }
+            },
+            {
+              "id": "snap_1_r6",
+              "label": {
+                "fr-FR": "6. Souvent, votre enfant évite, a en aversion ou fait à contrecœur les tâches qui nécessitent un effort mental soutenu."
+              }
+            },
+            {
+              "id": "snap_1_r7",
+              "label": {
+                "fr-FR": "7. Votre enfant perd souvent les objets nécessaires à ses tâches ou activités, par exemple ses devoirs, stylos ou livres."
+              }
+            },
+            {
+              "id": "snap_1_r8",
+              "label": {
+                "fr-FR": "8. Votre enfant se laisse souvent distraire par des stimuli externes."
+              }
+            },
+            {
+              "id": "snap_1_r9",
+              "label": {
+                "fr-FR": "9. Votre enfant a des oublis fréquents dans les activités de la vie quotidienne."
+              }
+            },
+            {
+              "id": "snap_1_r10",
+              "label": {
+                "fr-FR": "10. Votre enfant agite souvent les mains ou les pieds."
+              }
+            },
+            {
+              "id": "snap_1_r11",
+              "label": {
+                "fr-FR": "11. Votre enfant se lève souvent en classe alors qu'il devrait rester assis."
+              }
+            },
+            {
+              "id": "snap_1_r12",
+              "label": {
+                "fr-FR": "12. Souvent, votre enfant court ou grimpe partout dans des situations où cela est inapproprié."
+              }
+            },
+            {
+              "id": "snap_1_r13",
+              "label": {
+                "fr-FR": "13. Votre enfant a souvent du mal à se tenir tranquille dans les jeux ou les activités de loisirs."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "snap_1_c1",
+              "label": {
+                "fr-FR": "Pas du tout"
+              }
+            },
+            {
+              "id": "snap_1_c2",
+              "label": {
+                "fr-FR": "Un peu"
+              }
+            },
+            {
+              "id": "snap_1_c3",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "snap_1_c4",
+              "label": {
+                "fr-FR": "Très souvent"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "snap_1_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Basez-vous sur ce que vous avez observé au cours des six derniers mois. Toutes les lignes doivent recevoir une réponse."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle de TDAH SNAP-IV - partie 2/2",
+      "elements": [
+        {
+          "id": "snap_2",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle de TDAH SNAP-IV - partie 2/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "snap_2_r1",
+              "label": {
+                "fr-FR": "14. Votre enfant est souvent en mouvement ou agit souvent comme s'il était monté sur des ressorts."
+              }
+            },
+            {
+              "id": "snap_2_r2",
+              "label": {
+                "fr-FR": "15. Votre enfant parle souvent trop."
+              }
+            },
+            {
+              "id": "snap_2_r3",
+              "label": {
+                "fr-FR": "16. Votre enfant laisse souvent échapper la réponse à une question qui n'est pas encore entièrement posée."
+              }
+            },
+            {
+              "id": "snap_2_r4",
+              "label": {
+                "fr-FR": "17. Votre enfant a souvent de la difficulté à attendre son tour."
+              }
+            },
+            {
+              "id": "snap_2_r5",
+              "label": {
+                "fr-FR": "18. Votre enfant interrompt souvent les autres ou impose sa présence, par exemple dans les conversations ou les jeux."
+              }
+            },
+            {
+              "id": "snap_2_r6",
+              "label": {
+                "fr-FR": "19. Votre enfant se met souvent en colère."
+              }
+            },
+            {
+              "id": "snap_2_r7",
+              "label": {
+                "fr-FR": "20. Votre enfant conteste souvent ce que disent les adultes."
+              }
+            },
+            {
+              "id": "snap_2_r8",
+              "label": {
+                "fr-FR": "21. Votre enfant s'oppose souvent activement ou refuse de se plier aux demandes ou aux règles des adultes."
+              }
+            },
+            {
+              "id": "snap_2_r9",
+              "label": {
+                "fr-FR": "22. Votre enfant contrarie souvent les autres délibérément."
+              }
+            },
+            {
+              "id": "snap_2_r10",
+              "label": {
+                "fr-FR": "23. Votre enfant fait souvent porter aux autres la responsabilité de ses erreurs ou de sa mauvaise conduite."
+              }
+            },
+            {
+              "id": "snap_2_r11",
+              "label": {
+                "fr-FR": "24. Votre enfant est souvent susceptible ou facilement agacé par les autres."
+              }
+            },
+            {
+              "id": "snap_2_r12",
+              "label": {
+                "fr-FR": "25. Votre enfant est souvent fâché et plein de ressentiment."
+              }
+            },
+            {
+              "id": "snap_2_r13",
+              "label": {
+                "fr-FR": "26. Votre enfant se montre souvent méchant ou vindicatif, avec l'envie de se venger."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "snap_2_c1",
+              "label": {
+                "fr-FR": "Pas du tout"
+              }
+            },
+            {
+              "id": "snap_2_c2",
+              "label": {
+                "fr-FR": "Un peu"
+              }
+            },
+            {
+              "id": "snap_2_c3",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "snap_2_c4",
+              "label": {
+                "fr-FR": "Très souvent"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "snap_2_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Poursuivez avec les items suivants."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Dépistage des troubles du sommeil - partie 1/2",
+      "elements": [
+        {
+          "id": "sleep_hours",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "1. Combien d'heures votre enfant dort-il la plupart des nuits ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "sleep_hours_c1",
+              "label": {
+                "fr-FR": "Plus de 9 h"
+              }
+            },
+            {
+              "id": "sleep_hours_c2",
+              "label": {
+                "fr-FR": "8 à 9 h"
+              }
+            },
+            {
+              "id": "sleep_hours_c3",
+              "label": {
+                "fr-FR": "7 à 8 h"
+              }
+            },
+            {
+              "id": "sleep_hours_c4",
+              "label": {
+                "fr-FR": "5 à 7 h"
+              }
+            },
+            {
+              "id": "sleep_hours_c5",
+              "label": {
+                "fr-FR": "Moins de 5 h"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list",
+          "subheader": {
+            "fr-FR": "Basez-vous sur les six derniers mois. Pour la fréquence : rarement signifie 1 à 3 fois par mois, parfois 1 à 2 fois par semaine, souvent 3 à 5 fois par semaine et toujours tous les jours."
+          }
+        },
+        {
+          "id": "sleep_latency",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "2. Combien de temps après sa mise au lit votre enfant met-il habituellement pour s'endormir ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "sleep_latency_c1",
+              "label": {
+                "fr-FR": "Moins de 15 min"
+              }
+            },
+            {
+              "id": "sleep_latency_c2",
+              "label": {
+                "fr-FR": "15 à 30 min"
+              }
+            },
+            {
+              "id": "sleep_latency_c3",
+              "label": {
+                "fr-FR": "30 à 45 min"
+              }
+            },
+            {
+              "id": "sleep_latency_c4",
+              "label": {
+                "fr-FR": "45 à 60 min"
+              }
+            },
+            {
+              "id": "sleep_latency_c5",
+              "label": {
+                "fr-FR": "Plus de 60 min"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "sleep_1",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Sommeil - items 3 à 13"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "sleep_1_r1",
+              "label": {
+                "fr-FR": "3. L'enfant va au lit avec réticence."
+              }
+            },
+            {
+              "id": "sleep_1_r2",
+              "label": {
+                "fr-FR": "4. L'enfant a des difficultés à s'endormir."
+              }
+            },
+            {
+              "id": "sleep_1_r3",
+              "label": {
+                "fr-FR": "5. L'enfant ressent de l'anxiété ou des peurs au moment de s'endormir."
+              }
+            },
+            {
+              "id": "sleep_1_r4",
+              "label": {
+                "fr-FR": "6. Lorsque l'enfant s'endort, il semble vivre ses rêves."
+              }
+            },
+            {
+              "id": "sleep_1_r5",
+              "label": {
+                "fr-FR": "7. L'enfant transpire excessivement à l'endormissement."
+              }
+            },
+            {
+              "id": "sleep_1_r6",
+              "label": {
+                "fr-FR": "8. L'enfant se réveille plus de deux fois par nuit."
+              }
+            },
+            {
+              "id": "sleep_1_r7",
+              "label": {
+                "fr-FR": "9. L'enfant a des difficultés à s'endormir à nouveau après s'être réveillé dans la nuit."
+              }
+            },
+            {
+              "id": "sleep_1_r8",
+              "label": {
+                "fr-FR": "10. Dans son sommeil, l'enfant a des mouvements brusques ou des secousses des jambes, change souvent de position ou jette les couvertures au pied du lit."
+              }
+            },
+            {
+              "id": "sleep_1_r9",
+              "label": {
+                "fr-FR": "11. L'enfant a des difficultés à respirer durant la nuit."
+              }
+            },
+            {
+              "id": "sleep_1_r10",
+              "label": {
+                "fr-FR": "12. L'enfant fait des pauses respiratoires ou cherche sa respiration pendant son sommeil."
+              }
+            },
+            {
+              "id": "sleep_1_r11",
+              "label": {
+                "fr-FR": "13. L'enfant ronfle."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "sleep_1_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "sleep_1_c2",
+              "label": {
+                "fr-FR": "Rarement"
+              }
+            },
+            {
+              "id": "sleep_1_c3",
+              "label": {
+                "fr-FR": "Parfois"
+              }
+            },
+            {
+              "id": "sleep_1_c4",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "sleep_1_c5",
+              "label": {
+                "fr-FR": "Toujours"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "sleep_1_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Dépistage des troubles du sommeil - partie 2/2",
+      "elements": [
+        {
+          "id": "sleep_2",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Sommeil - items 14 à 25"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "sleep_2_r1",
+              "label": {
+                "fr-FR": "14. L'enfant transpire excessivement pendant la nuit."
+              }
+            },
+            {
+              "id": "sleep_2_r2",
+              "label": {
+                "fr-FR": "15. Vous avez assisté à un épisode de somnambulisme de l'enfant : il se lève et déambule pendant son sommeil."
+              }
+            },
+            {
+              "id": "sleep_2_r3",
+              "label": {
+                "fr-FR": "16. Vous avez déjà entendu l'enfant parler dans son sommeil."
+              }
+            },
+            {
+              "id": "sleep_2_r4",
+              "label": {
+                "fr-FR": "17. L'enfant grince des dents pendant son sommeil."
+              }
+            },
+            {
+              "id": "sleep_2_r5",
+              "label": {
+                "fr-FR": "18. L'enfant se réveille en hurlant ou est si confus qu'il est impossible de l'approcher, mais il n'a aucun souvenir de ces événements le matin suivant."
+              }
+            },
+            {
+              "id": "sleep_2_r6",
+              "label": {
+                "fr-FR": "19. L'enfant fait des cauchemars dont il ne se rappelle pas le matin venu."
+              }
+            },
+            {
+              "id": "sleep_2_r7",
+              "label": {
+                "fr-FR": "20. L'enfant est difficile à réveiller le matin."
+              }
+            },
+            {
+              "id": "sleep_2_r8",
+              "label": {
+                "fr-FR": "21. L'enfant se réveille le matin en se sentant fatigué."
+              }
+            },
+            {
+              "id": "sleep_2_r9",
+              "label": {
+                "fr-FR": "22. L'enfant se sent incapable de bouger quand il se réveille le matin."
+              }
+            },
+            {
+              "id": "sleep_2_r10",
+              "label": {
+                "fr-FR": "23. L'enfant est somnolent durant la journée."
+              }
+            },
+            {
+              "id": "sleep_2_r11",
+              "label": {
+                "fr-FR": "24. L'enfant s'endort brutalement, de façon inattendue, à l'école ou lors de ses activités."
+              }
+            },
+            {
+              "id": "sleep_2_r12",
+              "label": {
+                "fr-FR": "25. Lorsque l'enfant rit, il a une perte de tonus musculaire pouvant entraîner un affaiblissement du corps ou une chute."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "sleep_2_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "sleep_2_c2",
+              "label": {
+                "fr-FR": "Rarement"
+              }
+            },
+            {
+              "id": "sleep_2_c3",
+              "label": {
+                "fr-FR": "Parfois"
+              }
+            },
+            {
+              "id": "sleep_2_c4",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "sleep_2_c5",
+              "label": {
+                "fr-FR": "Toujours"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "sleep_2_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Poursuivez en utilisant le même barème de fréquence."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle d'Epworth",
+      "elements": [
+        {
+          "id": "epworth",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle d'Epworth pour la somnolence diurne"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "epworth_r1",
+              "label": {
+                "fr-FR": "1. Assis en train de lire."
+              }
+            },
+            {
+              "id": "epworth_r2",
+              "label": {
+                "fr-FR": "2. Assis en train de regarder la télévision ou une vidéo."
+              }
+            },
+            {
+              "id": "epworth_r3",
+              "label": {
+                "fr-FR": "3. Assis inactif dans un lieu public, par exemple au cinéma ou dans une salle d'attente."
+              }
+            },
+            {
+              "id": "epworth_r4",
+              "label": {
+                "fr-FR": "4. Assis en voiture ou en bus pour un trajet d'environ une heure."
+              }
+            },
+            {
+              "id": "epworth_r5",
+              "label": {
+                "fr-FR": "5. Allongé pour se reposer ou faire la sieste l'après-midi."
+              }
+            },
+            {
+              "id": "epworth_r6",
+              "label": {
+                "fr-FR": "6. Assis en train de parler à quelqu'un."
+              }
+            },
+            {
+              "id": "epworth_r7",
+              "label": {
+                "fr-FR": "7. Assis seul après le repas."
+              }
+            },
+            {
+              "id": "epworth_r8",
+              "label": {
+                "fr-FR": "8. Assis à l'école, en classe le matin ou l'après-midi."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "epworth_c1",
+              "label": {
+                "fr-FR": "Risque inexistant"
+              }
+            },
+            {
+              "id": "epworth_c2",
+              "label": {
+                "fr-FR": "Risque minime"
+              }
+            },
+            {
+              "id": "epworth_c3",
+              "label": {
+                "fr-FR": "Risque modéré"
+              }
+            },
+            {
+              "id": "epworth_c4",
+              "label": {
+                "fr-FR": "Risque important"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "epworth_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Au cours des 30 derniers jours, estimez le risque que votre enfant s'endorme dans chaque situation. Si une activité n'a pas eu lieu, imaginez l'effet probable."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Index de sévérité de l'insomnie",
+      "elements": [
+        {
+          "id": "isi_1",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "1. Quelle est la sévérité actuelle des difficultés de votre enfant à s'endormir ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "isi_1_c1",
+              "label": {
+                "fr-FR": "Aucune"
+              }
+            },
+            {
+              "id": "isi_1_c2",
+              "label": {
+                "fr-FR": "Légère"
+              }
+            },
+            {
+              "id": "isi_1_c3",
+              "label": {
+                "fr-FR": "Moyenne"
+              }
+            },
+            {
+              "id": "isi_1_c4",
+              "label": {
+                "fr-FR": "Importante"
+              }
+            },
+            {
+              "id": "isi_1_c5",
+              "label": {
+                "fr-FR": "Extrême"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list",
+          "subheader": {
+            "fr-FR": "À partir de ce que vous observez, estimez les difficultés de sommeil de votre enfant au cours du dernier mois."
+          }
+        },
+        {
+          "id": "isi_2",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "2. Quelle est la sévérité de ses réveils nocturnes fréquents ou prolongés ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "isi_2_c1",
+              "label": {
+                "fr-FR": "Aucune"
+              }
+            },
+            {
+              "id": "isi_2_c2",
+              "label": {
+                "fr-FR": "Légère"
+              }
+            },
+            {
+              "id": "isi_2_c3",
+              "label": {
+                "fr-FR": "Moyenne"
+              }
+            },
+            {
+              "id": "isi_2_c4",
+              "label": {
+                "fr-FR": "Importante"
+              }
+            },
+            {
+              "id": "isi_2_c5",
+              "label": {
+                "fr-FR": "Extrême"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "isi_3",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "3. Quelle est la sévérité de ses réveils trop précoces le matin ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "isi_3_c1",
+              "label": {
+                "fr-FR": "Aucune"
+              }
+            },
+            {
+              "id": "isi_3_c2",
+              "label": {
+                "fr-FR": "Légère"
+              }
+            },
+            {
+              "id": "isi_3_c3",
+              "label": {
+                "fr-FR": "Moyenne"
+              }
+            },
+            {
+              "id": "isi_3_c4",
+              "label": {
+                "fr-FR": "Importante"
+              }
+            },
+            {
+              "id": "isi_3_c5",
+              "label": {
+                "fr-FR": "Extrême"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "isi_4",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "4. Jusqu'à quel point votre enfant est-il satisfait de son sommeil actuel ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "isi_4_c1",
+              "label": {
+                "fr-FR": "Très satisfait"
+              }
+            },
+            {
+              "id": "isi_4_c2",
+              "label": {
+                "fr-FR": "Satisfait"
+              }
+            },
+            {
+              "id": "isi_4_c3",
+              "label": {
+                "fr-FR": "Plutôt satisfait"
+              }
+            },
+            {
+              "id": "isi_4_c4",
+              "label": {
+                "fr-FR": "Insatisfait"
+              }
+            },
+            {
+              "id": "isi_4_c5",
+              "label": {
+                "fr-FR": "Très insatisfait"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "isi_5",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "5. Jusqu'à quel point ses difficultés de sommeil perturbent-elles son fonctionnement quotidien, par exemple la fatigue, la concentration, la mémoire ou l'humeur ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "isi_5_c1",
+              "label": {
+                "fr-FR": "Aucunement"
+              }
+            },
+            {
+              "id": "isi_5_c2",
+              "label": {
+                "fr-FR": "Légèrement"
+              }
+            },
+            {
+              "id": "isi_5_c3",
+              "label": {
+                "fr-FR": "Moyennement"
+              }
+            },
+            {
+              "id": "isi_5_c4",
+              "label": {
+                "fr-FR": "Beaucoup"
+              }
+            },
+            {
+              "id": "isi_5_c5",
+              "label": {
+                "fr-FR": "Extrêmement"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "isi_6",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "6. À quel point ses difficultés de sommeil sont-elles remarquées par les autres en raison de leurs effets sur sa qualité de vie ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "isi_6_c1",
+              "label": {
+                "fr-FR": "Aucunement"
+              }
+            },
+            {
+              "id": "isi_6_c2",
+              "label": {
+                "fr-FR": "Légèrement"
+              }
+            },
+            {
+              "id": "isi_6_c3",
+              "label": {
+                "fr-FR": "Moyennement"
+              }
+            },
+            {
+              "id": "isi_6_c4",
+              "label": {
+                "fr-FR": "Très"
+              }
+            },
+            {
+              "id": "isi_6_c5",
+              "label": {
+                "fr-FR": "Extrêmement"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "isi_7",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "7. Jusqu'à quel point votre enfant est-il préoccupé par ses difficultés de sommeil ?"
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "isi_7_c1",
+              "label": {
+                "fr-FR": "Aucunement"
+              }
+            },
+            {
+              "id": "isi_7_c2",
+              "label": {
+                "fr-FR": "Légèrement"
+              }
+            },
+            {
+              "id": "isi_7_c3",
+              "label": {
+                "fr-FR": "Moyennement"
+              }
+            },
+            {
+              "id": "isi_7_c4",
+              "label": {
+                "fr-FR": "Très"
+              }
+            },
+            {
+              "id": "isi_7_c5",
+              "label": {
+                "fr-FR": "Extrêmement"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle HAD - partie 1/2",
+      "elements": [
+        {
+          "id": "had_1",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "1. Votre enfant se sent tendu ou énervé."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_1_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "had_1_c2",
+              "label": {
+                "fr-FR": "De temps en temps"
+              }
+            },
+            {
+              "id": "had_1_c3",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "had_1_c4",
+              "label": {
+                "fr-FR": "La plupart du temps"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list",
+          "subheader": {
+            "fr-FR": "Pensez à ce que votre enfant a semblé ressentir au cours de la semaine écoulée. Choisissez la réponse qui correspond le mieux à votre observation."
+          }
+        },
+        {
+          "id": "had_2",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "2. Votre enfant prend plaisir aux mêmes choses qu'autrefois."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_2_c1",
+              "label": {
+                "fr-FR": "Oui, tout autant qu'avant"
+              }
+            },
+            {
+              "id": "had_2_c2",
+              "label": {
+                "fr-FR": "Pas autant"
+              }
+            },
+            {
+              "id": "had_2_c3",
+              "label": {
+                "fr-FR": "Un peu seulement"
+              }
+            },
+            {
+              "id": "had_2_c4",
+              "label": {
+                "fr-FR": "Presque plus"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_3",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "3. Votre enfant a une sensation de peur comme si quelque chose d'horrible allait arriver."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_3_c1",
+              "label": {
+                "fr-FR": "Pas du tout"
+              }
+            },
+            {
+              "id": "had_3_c2",
+              "label": {
+                "fr-FR": "Un peu, sans inquiétude"
+              }
+            },
+            {
+              "id": "had_3_c3",
+              "label": {
+                "fr-FR": "Oui, mais ce n'est pas trop grave"
+              }
+            },
+            {
+              "id": "had_3_c4",
+              "label": {
+                "fr-FR": "Oui, très nettement"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_4",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "4. Votre enfant rit et voit le bon côté des choses."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_4_c1",
+              "label": {
+                "fr-FR": "Autant que par le passé"
+              }
+            },
+            {
+              "id": "had_4_c2",
+              "label": {
+                "fr-FR": "Pas autant qu'avant"
+              }
+            },
+            {
+              "id": "had_4_c3",
+              "label": {
+                "fr-FR": "Vraiment moins qu'avant"
+              }
+            },
+            {
+              "id": "had_4_c4",
+              "label": {
+                "fr-FR": "Plus du tout"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_5",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "5. Votre enfant se fait du souci."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_5_c1",
+              "label": {
+                "fr-FR": "Très occasionnellement"
+              }
+            },
+            {
+              "id": "had_5_c2",
+              "label": {
+                "fr-FR": "Occasionnellement"
+              }
+            },
+            {
+              "id": "had_5_c3",
+              "label": {
+                "fr-FR": "Assez souvent"
+              }
+            },
+            {
+              "id": "had_5_c4",
+              "label": {
+                "fr-FR": "Très souvent"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_6",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "6. Votre enfant est de bonne humeur."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_6_c1",
+              "label": {
+                "fr-FR": "La plupart du temps"
+              }
+            },
+            {
+              "id": "had_6_c2",
+              "label": {
+                "fr-FR": "Assez souvent"
+              }
+            },
+            {
+              "id": "had_6_c3",
+              "label": {
+                "fr-FR": "Rarement"
+              }
+            },
+            {
+              "id": "had_6_c4",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_7",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "7. Votre enfant peut rester tranquillement assis sans rien faire et se sentir décontracté."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_7_c1",
+              "label": {
+                "fr-FR": "Oui, quoi qu'il arrive"
+              }
+            },
+            {
+              "id": "had_7_c2",
+              "label": {
+                "fr-FR": "Oui, en général"
+              }
+            },
+            {
+              "id": "had_7_c3",
+              "label": {
+                "fr-FR": "Rarement"
+              }
+            },
+            {
+              "id": "had_7_c4",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle HAD - partie 2/2",
+      "elements": [
+        {
+          "id": "had_8",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "8. Votre enfant donne l'impression de fonctionner au ralenti."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_8_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "had_8_c2",
+              "label": {
+                "fr-FR": "Parfois"
+              }
+            },
+            {
+              "id": "had_8_c3",
+              "label": {
+                "fr-FR": "Très souvent"
+              }
+            },
+            {
+              "id": "had_8_c4",
+              "label": {
+                "fr-FR": "Presque toujours"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_9",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "9. Votre enfant éprouve des sensations de peur et a l'estomac noué."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_9_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "had_9_c2",
+              "label": {
+                "fr-FR": "Parfois"
+              }
+            },
+            {
+              "id": "had_9_c3",
+              "label": {
+                "fr-FR": "Assez souvent"
+              }
+            },
+            {
+              "id": "had_9_c4",
+              "label": {
+                "fr-FR": "Très souvent"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_10",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "10. Votre enfant ne s'intéresse plus à son apparence."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_10_c1",
+              "label": {
+                "fr-FR": "Il y prête autant d'attention que par le passé"
+              }
+            },
+            {
+              "id": "had_10_c2",
+              "label": {
+                "fr-FR": "Il se peut qu'il n'y fasse plus autant attention"
+              }
+            },
+            {
+              "id": "had_10_c3",
+              "label": {
+                "fr-FR": "Il n'y apporte pas autant d'attention qu'il devrait"
+              }
+            },
+            {
+              "id": "had_10_c4",
+              "label": {
+                "fr-FR": "Plus du tout"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_11",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "11. Votre enfant a la bougeotte et n'arrive pas à tenir en place."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_11_c1",
+              "label": {
+                "fr-FR": "Pas du tout"
+              }
+            },
+            {
+              "id": "had_11_c2",
+              "label": {
+                "fr-FR": "Pas tellement"
+              }
+            },
+            {
+              "id": "had_11_c3",
+              "label": {
+                "fr-FR": "Un peu"
+              }
+            },
+            {
+              "id": "had_11_c4",
+              "label": {
+                "fr-FR": "Oui, tout à fait"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_12",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "12. Votre enfant se réjouit d'avance à l'idée de faire certaines choses."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_12_c1",
+              "label": {
+                "fr-FR": "Autant qu'avant"
+              }
+            },
+            {
+              "id": "had_12_c2",
+              "label": {
+                "fr-FR": "Un peu moins qu'avant"
+              }
+            },
+            {
+              "id": "had_12_c3",
+              "label": {
+                "fr-FR": "Bien moins qu'avant"
+              }
+            },
+            {
+              "id": "had_12_c4",
+              "label": {
+                "fr-FR": "Presque jamais"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_13",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "13. Votre enfant éprouve des sensations soudaines de panique."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_13_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "had_13_c2",
+              "label": {
+                "fr-FR": "Pas très souvent"
+              }
+            },
+            {
+              "id": "had_13_c3",
+              "label": {
+                "fr-FR": "Assez souvent"
+              }
+            },
+            {
+              "id": "had_13_c4",
+              "label": {
+                "fr-FR": "Vraiment très souvent"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        },
+        {
+          "id": "had_14",
+          "type": "multipleChoiceSingle",
+          "headline": {
+            "fr-FR": "14. Votre enfant peut prendre plaisir à un bon livre ou à une bonne émission de télévision."
+          },
+          "required": true,
+          "choices": [
+            {
+              "id": "had_14_c1",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "had_14_c2",
+              "label": {
+                "fr-FR": "Parfois"
+              }
+            },
+            {
+              "id": "had_14_c3",
+              "label": {
+                "fr-FR": "Rarement"
+              }
+            },
+            {
+              "id": "had_14_c4",
+              "label": {
+                "fr-FR": "Très rarement"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "displayType": "list"
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle de réciprocité sociale SRS - partie 1/3",
+      "elements": [
+        {
+          "id": "srs_1",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle SRS - partie 1/3"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "srs_1_r1",
+              "label": {
+                "fr-FR": "1. Semble beaucoup plus nerveux dans des situations sociales que lorsqu'il est seul."
+              }
+            },
+            {
+              "id": "srs_1_r2",
+              "label": {
+                "fr-FR": "2. Son expression faciale n'est pas en harmonie avec ce qu'il dit."
+              }
+            },
+            {
+              "id": "srs_1_r3",
+              "label": {
+                "fr-FR": "3. Semble avoir confiance en lui quand il interagit avec les autres."
+              }
+            },
+            {
+              "id": "srs_1_r4",
+              "label": {
+                "fr-FR": "4. Quand il est stressé, l'enfant semble fonctionner en pilote automatique ou présente des comportements rigides qui paraissent étranges."
+              }
+            },
+            {
+              "id": "srs_1_r5",
+              "label": {
+                "fr-FR": "5. Ne réalise pas que les autres essaient de se servir de lui."
+              }
+            },
+            {
+              "id": "srs_1_r6",
+              "label": {
+                "fr-FR": "6. Préfère être seul plutôt qu'avec les autres."
+              }
+            },
+            {
+              "id": "srs_1_r7",
+              "label": {
+                "fr-FR": "7. Est conscient de ce que les autres pensent ou ressentent."
+              }
+            },
+            {
+              "id": "srs_1_r8",
+              "label": {
+                "fr-FR": "8. Se comporte de façon étrange ou bizarre."
+              }
+            },
+            {
+              "id": "srs_1_r9",
+              "label": {
+                "fr-FR": "9. S'accroche aux adultes et semble trop dépendant d'eux."
+              }
+            },
+            {
+              "id": "srs_1_r10",
+              "label": {
+                "fr-FR": "10. Interprète les choses de manière trop littérale et ne comprend pas le sens réel des conversations."
+              }
+            },
+            {
+              "id": "srs_1_r11",
+              "label": {
+                "fr-FR": "11. A confiance en lui."
+              }
+            },
+            {
+              "id": "srs_1_r12",
+              "label": {
+                "fr-FR": "12. Est capable de communiquer ses sentiments aux autres."
+              }
+            },
+            {
+              "id": "srs_1_r13",
+              "label": {
+                "fr-FR": "13. Est maladroit dans les interactions impliquant un tour de rôle avec les personnes de son âge, par exemple dans les tours de parole."
+              }
+            },
+            {
+              "id": "srs_1_r14",
+              "label": {
+                "fr-FR": "14. Est maladroit ou mal coordonné dans les activités physiques."
+              }
+            },
+            {
+              "id": "srs_1_r15",
+              "label": {
+                "fr-FR": "15. Est capable de comprendre la signification du ton de la voix et de l'expression faciale des autres."
+              }
+            },
+            {
+              "id": "srs_1_r16",
+              "label": {
+                "fr-FR": "16. Évite le contact visuel ou a un contact visuel inhabituel."
+              }
+            },
+            {
+              "id": "srs_1_r17",
+              "label": {
+                "fr-FR": "17. Reconnaît lorsque quelque chose est injuste."
+              }
+            },
+            {
+              "id": "srs_1_r18",
+              "label": {
+                "fr-FR": "18. A du mal à se faire des amis, même quand il fait de son mieux."
+              }
+            },
+            {
+              "id": "srs_1_r19",
+              "label": {
+                "fr-FR": "19. A des difficultés à transmettre ses idées au cours d'une conversation."
+              }
+            },
+            {
+              "id": "srs_1_r20",
+              "label": {
+                "fr-FR": "20. Présente des intérêts sensoriels inhabituels, comme faire tourner des objets ou les mettre dans sa bouche, ou des manières étranges de jouer."
+              }
+            },
+            {
+              "id": "srs_1_r21",
+              "label": {
+                "fr-FR": "21. Est capable d'imiter les actions des autres."
+              }
+            },
+            {
+              "id": "srs_1_r22",
+              "label": {
+                "fr-FR": "22. Joue de manière appropriée avec les enfants de son âge."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "srs_1_c1",
+              "label": {
+                "fr-FR": "Pas vrai"
+              }
+            },
+            {
+              "id": "srs_1_c2",
+              "label": {
+                "fr-FR": "Parfois vrai"
+              }
+            },
+            {
+              "id": "srs_1_c3",
+              "label": {
+                "fr-FR": "Souvent vrai"
+              }
+            },
+            {
+              "id": "srs_1_c4",
+              "label": {
+                "fr-FR": "Presque toujours vrai"
+              }
+            },
+            {
+              "id": "srs_1_c5",
+              "label": {
+                "fr-FR": "Ne s'applique pas"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "srs_1_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Pour chaque comportement, choisissez la réponse qui décrit le mieux votre enfant. Utilisez « Ne s'applique pas » lorsqu'un item ne peut réellement pas être évalué."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle de réciprocité sociale SRS - partie 2/3",
+      "elements": [
+        {
+          "id": "srs_2",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle SRS - partie 2/3"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "srs_2_r1",
+              "label": {
+                "fr-FR": "23. Ne se joint pas aux activités des autres sauf si on le lui demande."
+              }
+            },
+            {
+              "id": "srs_2_r2",
+              "label": {
+                "fr-FR": "24. A plus de difficulté que les autres enfants à modifier ses routines."
+              }
+            },
+            {
+              "id": "srs_2_r3",
+              "label": {
+                "fr-FR": "25. Ne se soucie pas d'être en phase ou sur la même longueur d'onde que les autres."
+              }
+            },
+            {
+              "id": "srs_2_r4",
+              "label": {
+                "fr-FR": "26. Offre du réconfort aux autres quand ils sont tristes."
+              }
+            },
+            {
+              "id": "srs_2_r5",
+              "label": {
+                "fr-FR": "27. Évite d'initier des interactions sociales avec les autres."
+              }
+            },
+            {
+              "id": "srs_2_r6",
+              "label": {
+                "fr-FR": "28. Pense ou parle de la même chose de manière répétitive."
+              }
+            },
+            {
+              "id": "srs_2_r7",
+              "label": {
+                "fr-FR": "29. Est considéré par les autres enfants comme étrange ou bizarre."
+              }
+            },
+            {
+              "id": "srs_2_r8",
+              "label": {
+                "fr-FR": "30. Est souvent dépassé par les situations où il se passe beaucoup de choses en même temps."
+              }
+            },
+            {
+              "id": "srs_2_r9",
+              "label": {
+                "fr-FR": "31. Ne peut pas s'arrêter de penser à quelque chose une fois qu'il a commencé."
+              }
+            },
+            {
+              "id": "srs_2_r10",
+              "label": {
+                "fr-FR": "32. A une bonne hygiène personnelle."
+              }
+            },
+            {
+              "id": "srs_2_r11",
+              "label": {
+                "fr-FR": "33. Est socialement maladroit, même quand il essaie d'être poli."
+              }
+            },
+            {
+              "id": "srs_2_r12",
+              "label": {
+                "fr-FR": "34. Évite les personnes qui veulent être proches émotionnellement de lui."
+              }
+            },
+            {
+              "id": "srs_2_r13",
+              "label": {
+                "fr-FR": "35. A du mal à suivre le rythme d'une conversation normale."
+              }
+            },
+            {
+              "id": "srs_2_r14",
+              "label": {
+                "fr-FR": "36. A des difficultés à entrer en relation avec les adultes."
+              }
+            },
+            {
+              "id": "srs_2_r15",
+              "label": {
+                "fr-FR": "37. A des difficultés à entrer en relation avec les personnes de son âge."
+              }
+            },
+            {
+              "id": "srs_2_r16",
+              "label": {
+                "fr-FR": "38. Réagit de manière appropriée aux changements d'humeur des autres, par exemple lorsqu'un camarade qui était content devient triste."
+              }
+            },
+            {
+              "id": "srs_2_r17",
+              "label": {
+                "fr-FR": "39. A une variété d'intérêts restreinte."
+              }
+            },
+            {
+              "id": "srs_2_r18",
+              "label": {
+                "fr-FR": "40. A de l'imagination et est à l'aise dans les jeux de faire semblant, sans perdre le contact avec la réalité."
+              }
+            },
+            {
+              "id": "srs_2_r19",
+              "label": {
+                "fr-FR": "41. Semble sans but et passe passivement d'une activité à l'autre."
+              }
+            },
+            {
+              "id": "srs_2_r20",
+              "label": {
+                "fr-FR": "42. Semble extrêmement sensible aux sons, aux textures ou aux odeurs."
+              }
+            },
+            {
+              "id": "srs_2_r21",
+              "label": {
+                "fr-FR": "43. Se sépare facilement des personnes qui s'occupent de lui."
+              }
+            },
+            {
+              "id": "srs_2_r22",
+              "label": {
+                "fr-FR": "44. Ne comprend pas les relations entre les événements d'une manière appropriée à son âge, par exemple en mélangeant les causes et les conséquences."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "srs_2_c1",
+              "label": {
+                "fr-FR": "Pas vrai"
+              }
+            },
+            {
+              "id": "srs_2_c2",
+              "label": {
+                "fr-FR": "Parfois vrai"
+              }
+            },
+            {
+              "id": "srs_2_c3",
+              "label": {
+                "fr-FR": "Souvent vrai"
+              }
+            },
+            {
+              "id": "srs_2_c4",
+              "label": {
+                "fr-FR": "Presque toujours vrai"
+              }
+            },
+            {
+              "id": "srs_2_c5",
+              "label": {
+                "fr-FR": "Ne s'applique pas"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "srs_2_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Poursuivez avec les comportements suivants."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle de réciprocité sociale SRS - partie 3/3",
+      "elements": [
+        {
+          "id": "srs_3",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle SRS - partie 3/3"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "srs_3_r1",
+              "label": {
+                "fr-FR": "45. Prête attention à des choses qui intéressent les autres, par exemple en regardant dans la même direction qu'eux."
+              }
+            },
+            {
+              "id": "srs_3_r2",
+              "label": {
+                "fr-FR": "46. A une expression faciale trop sérieuse."
+              }
+            },
+            {
+              "id": "srs_3_r3",
+              "label": {
+                "fr-FR": "47. Fait le sot ou rit de manière inappropriée."
+              }
+            },
+            {
+              "id": "srs_3_r4",
+              "label": {
+                "fr-FR": "48. A le sens de l'humour et comprend les plaisanteries."
+              }
+            },
+            {
+              "id": "srs_3_r5",
+              "label": {
+                "fr-FR": "49. A des aptitudes très supérieures à la moyenne dans certains domaines précis, tandis que son fonctionnement dans la plupart des tâches n'est pas bon."
+              }
+            },
+            {
+              "id": "srs_3_r6",
+              "label": {
+                "fr-FR": "50. A des comportements répétitifs inhabituels, comme agiter les mains ou se balancer."
+              }
+            },
+            {
+              "id": "srs_3_r7",
+              "label": {
+                "fr-FR": "51. A des difficultés à répondre directement aux questions et tourne autour du sujet."
+              }
+            },
+            {
+              "id": "srs_3_r8",
+              "label": {
+                "fr-FR": "52. Est conscient lorsqu'il parle trop fort ou fait trop de bruit."
+              }
+            },
+            {
+              "id": "srs_3_r9",
+              "label": {
+                "fr-FR": "53. Parle avec une tonalité vocale inhabituelle, par exemple comme un robot ou comme s'il donnait un cours."
+              }
+            },
+            {
+              "id": "srs_3_r10",
+              "label": {
+                "fr-FR": "54. Semble utiliser les personnes comme si elles étaient des objets."
+              }
+            },
+            {
+              "id": "srs_3_r11",
+              "label": {
+                "fr-FR": "55. Se rend compte lorsqu'il est trop proche ou envahit l'espace d'autrui."
+              }
+            },
+            {
+              "id": "srs_3_r12",
+              "label": {
+                "fr-FR": "56. Marche entre deux personnes en train de parler."
+              }
+            },
+            {
+              "id": "srs_3_r13",
+              "label": {
+                "fr-FR": "57. Est souvent l'objet de moqueries."
+              }
+            },
+            {
+              "id": "srs_3_r14",
+              "label": {
+                "fr-FR": "58. Se concentre de manière inadaptée sur des parties d'objets au lieu d'en voir la totalité."
+              }
+            },
+            {
+              "id": "srs_3_r15",
+              "label": {
+                "fr-FR": "59. Est trop soupçonneux."
+              }
+            },
+            {
+              "id": "srs_3_r16",
+              "label": {
+                "fr-FR": "60. Est émotionnellement distant et montre peu ses émotions."
+              }
+            },
+            {
+              "id": "srs_3_r17",
+              "label": {
+                "fr-FR": "61. Est inflexible et a du mal à changer d'opinion."
+              }
+            },
+            {
+              "id": "srs_3_r18",
+              "label": {
+                "fr-FR": "62. Donne des raisons inhabituelles ou illogiques pour faire certaines choses."
+              }
+            },
+            {
+              "id": "srs_3_r19",
+              "label": {
+                "fr-FR": "63. Touche les autres de manière inadaptée, par exemple pour établir un contact puis s'en va sans rien dire."
+              }
+            },
+            {
+              "id": "srs_3_r20",
+              "label": {
+                "fr-FR": "64. Est trop tendu dans les situations sociales."
+              }
+            },
+            {
+              "id": "srs_3_r21",
+              "label": {
+                "fr-FR": "65. Regarde ou fixe les autres de manière inappropriée."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "srs_3_c1",
+              "label": {
+                "fr-FR": "Pas vrai"
+              }
+            },
+            {
+              "id": "srs_3_c2",
+              "label": {
+                "fr-FR": "Parfois vrai"
+              }
+            },
+            {
+              "id": "srs_3_c3",
+              "label": {
+                "fr-FR": "Souvent vrai"
+              }
+            },
+            {
+              "id": "srs_3_c4",
+              "label": {
+                "fr-FR": "Presque toujours vrai"
+              }
+            },
+            {
+              "id": "srs_3_c5",
+              "label": {
+                "fr-FR": "Ne s'applique pas"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "srs_3_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Poursuivez avec les comportements suivants."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Questionnaire sur la communication sociale SCQ - partie 1/2",
+      "elements": [
+        {
+          "id": "scq_1",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Questionnaire SCQ - partie 1/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "scq_1_r1",
+              "label": {
+                "fr-FR": "1. Actuellement, votre enfant utilise-t-il au moins des phrases courtes lorsqu'il parle ?"
+              }
+            },
+            {
+              "id": "scq_1_r2",
+              "label": {
+                "fr-FR": "2. Pouvez-vous avoir avec lui une conversation dans laquelle chacun parle à son tour et rebondit sur ce que l'autre a dit ?"
+              }
+            },
+            {
+              "id": "scq_1_r3",
+              "label": {
+                "fr-FR": "3. A-t-il déjà dit des phrases étranges ou répété régulièrement la même chose, toujours de la même façon ?"
+              }
+            },
+            {
+              "id": "scq_1_r4",
+              "label": {
+                "fr-FR": "4. A-t-il déjà posé des questions ou fait des commentaires inappropriés, par exemple à des moments inopportuns ?"
+              }
+            },
+            {
+              "id": "scq_1_r5",
+              "label": {
+                "fr-FR": "5. A-t-il déjà utilisé les pronoms de manière incorrecte, par exemple en disant « tu » ou « il » pour parler de lui-même ?"
+              }
+            },
+            {
+              "id": "scq_1_r6",
+              "label": {
+                "fr-FR": "6. Lui est-il déjà arrivé d'utiliser des mots qu'il semblait avoir inventés ou de dire des choses de manière métaphorique, par exemple « pluie chaude » pour « vapeur » ?"
+              }
+            },
+            {
+              "id": "scq_1_r7",
+              "label": {
+                "fr-FR": "7. Lui est-il déjà arrivé de répéter des choses exactement de la même manière ou d'insister pour que vous répétiez inlassablement la même chose ?"
+              }
+            },
+            {
+              "id": "scq_1_r8",
+              "label": {
+                "fr-FR": "8. Y a-t-il déjà eu des choses qu'il semblait devoir faire d'une manière particulière ou selon un certain ordre, ou des rituels qu'il vous demandait de reproduire avec insistance ?"
+              }
+            },
+            {
+              "id": "scq_1_r9",
+              "label": {
+                "fr-FR": "9. Ses expressions faciales vous ont-elles habituellement semblé adaptées aux situations ?"
+              }
+            },
+            {
+              "id": "scq_1_r10",
+              "label": {
+                "fr-FR": "10. A-t-il déjà utilisé votre main comme un outil ou comme une partie de son propre corps, par exemple pour pointer ou vous faire ouvrir une porte ?"
+              }
+            },
+            {
+              "id": "scq_1_r11",
+              "label": {
+                "fr-FR": "11. A-t-il déjà eu des intérêts qui le préoccupaient et paraissaient étranges aux autres, par exemple les feux de circulation, les tuyaux ou les horaires ?"
+              }
+            },
+            {
+              "id": "scq_1_r12",
+              "label": {
+                "fr-FR": "12. A-t-il déjà été plus intéressé par une partie d'un jouet ou d'un objet que par son utilisation habituelle ?"
+              }
+            },
+            {
+              "id": "scq_1_r13",
+              "label": {
+                "fr-FR": "13. A-t-il déjà eu des intérêts adaptés à son âge mais inhabituels par leur intensité, par exemple les trains ou les dinosaures ?"
+              }
+            },
+            {
+              "id": "scq_1_r14",
+              "label": {
+                "fr-FR": "14. A-t-il déjà manifesté un intérêt inhabituel pour la vue, la sensation, le son, le goût ou l'odeur des choses ou d'une personne ?"
+              }
+            },
+            {
+              "id": "scq_1_r15",
+              "label": {
+                "fr-FR": "15. A-t-il déjà eu des maniérismes ou une façon étrange de bouger les mains ou les doigts ?"
+              }
+            },
+            {
+              "id": "scq_1_r16",
+              "label": {
+                "fr-FR": "16. A-t-il déjà eu des mouvements complexes de l'ensemble du corps, comme faire la toupie ou sauter sur place de manière répétitive ?"
+              }
+            },
+            {
+              "id": "scq_1_r17",
+              "label": {
+                "fr-FR": "17. S'est-il déjà fait mal volontairement, par exemple en se mordant les bras ou en se tapant la tête ?"
+              }
+            },
+            {
+              "id": "scq_1_r18",
+              "label": {
+                "fr-FR": "18. A-t-il déjà eu un objet, autre qu'une peluche, un doudou ou une couverture, qu'il devait emmener partout ?"
+              }
+            },
+            {
+              "id": "scq_1_r19",
+              "label": {
+                "fr-FR": "19. A-t-il des amis proches ou un meilleur ami ?"
+              }
+            },
+            {
+              "id": "scq_1_r20",
+              "label": {
+                "fr-FR": "20. Entre 4 et 5 ans, lui arrivait-il de bavarder avec vous simplement pour être agréable, sans chercher à obtenir quelque chose ?"
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "scq_1_c1",
+              "label": {
+                "fr-FR": "Oui"
+              }
+            },
+            {
+              "id": "scq_1_c2",
+              "label": {
+                "fr-FR": "Non"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "scq_1_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Certaines questions regroupent plusieurs comportements. Répondez « Oui » si au moins l'un d'eux a été présent à une période de la vie de votre enfant."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Questionnaire sur la communication sociale SCQ - partie 2/2",
+      "elements": [
+        {
+          "id": "scq_2",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Questionnaire SCQ - partie 2/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "scq_2_r1",
+              "label": {
+                "fr-FR": "21. Entre 4 et 5 ans, lui arrivait-il de vous imiter spontanément, ou d'imiter d'autres personnes et leurs activités ?"
+              }
+            },
+            {
+              "id": "scq_2_r2",
+              "label": {
+                "fr-FR": "22. Entre 4 et 5 ans, lui arrivait-il de pointer spontanément des choses autour de lui simplement pour vous les montrer ?"
+              }
+            },
+            {
+              "id": "scq_2_r3",
+              "label": {
+                "fr-FR": "23. Entre 4 et 5 ans, lui arrivait-il d'utiliser des gestes autres que pointer ou tirer votre main pour vous faire savoir ce qu'il voulait ?"
+              }
+            },
+            {
+              "id": "scq_2_r4",
+              "label": {
+                "fr-FR": "24. Entre 4 et 5 ans, faisait-il « oui » de la tête ?"
+              }
+            },
+            {
+              "id": "scq_2_r5",
+              "label": {
+                "fr-FR": "25. Entre 4 et 5 ans, faisait-il « non » de la tête ?"
+              }
+            },
+            {
+              "id": "scq_2_r6",
+              "label": {
+                "fr-FR": "26. Entre 4 et 5 ans, vous regardait-il directement dans les yeux lorsqu'il faisait quelque chose avec vous ou vous parlait ?"
+              }
+            },
+            {
+              "id": "scq_2_r7",
+              "label": {
+                "fr-FR": "27. Entre 4 et 5 ans, souriait-il en réponse à quelqu'un qui lui souriait ?"
+              }
+            },
+            {
+              "id": "scq_2_r8",
+              "label": {
+                "fr-FR": "28. Entre 4 et 5 ans, lui arrivait-il de montrer des choses qui l'intéressaient pour attirer votre attention ?"
+              }
+            },
+            {
+              "id": "scq_2_r9",
+              "label": {
+                "fr-FR": "29. Entre 4 et 5 ans, lui arrivait-il de partager des choses autres que de la nourriture ?"
+              }
+            },
+            {
+              "id": "scq_2_r10",
+              "label": {
+                "fr-FR": "30. Entre 4 et 5 ans, lui arrivait-il de partager avec vous son plaisir ou sa joie ?"
+              }
+            },
+            {
+              "id": "scq_2_r11",
+              "label": {
+                "fr-FR": "31. Entre 4 et 5 ans, lui arrivait-il de vous réconforter si vous étiez triste ou blessé ?"
+              }
+            },
+            {
+              "id": "scq_2_r12",
+              "label": {
+                "fr-FR": "32. Entre 4 et 5 ans, lorsqu'il voulait quelque chose ou avait besoin d'aide, vous regardait-il en faisant des gestes accompagnés de sons ou de mots pour attirer votre attention ?"
+              }
+            },
+            {
+              "id": "scq_2_r13",
+              "label": {
+                "fr-FR": "33. Entre 4 et 5 ans, montrait-il une variété habituelle d'expressions faciales ?"
+              }
+            },
+            {
+              "id": "scq_2_r14",
+              "label": {
+                "fr-FR": "34. Entre 4 et 5 ans, lui arrivait-il de se joindre spontanément à des jeux sociaux et d'essayer d'imiter les actions ?"
+              }
+            },
+            {
+              "id": "scq_2_r15",
+              "label": {
+                "fr-FR": "35. Entre 4 et 5 ans, jouait-il à des jeux de faire semblant ?"
+              }
+            },
+            {
+              "id": "scq_2_r16",
+              "label": {
+                "fr-FR": "36. Entre 4 et 5 ans, semblait-il intéressé par les autres enfants de son âge qu'il ne connaissait pas ?"
+              }
+            },
+            {
+              "id": "scq_2_r17",
+              "label": {
+                "fr-FR": "37. Entre 4 et 5 ans, réagissait-il positivement lorsqu'un enfant l'approchait ?"
+              }
+            },
+            {
+              "id": "scq_2_r18",
+              "label": {
+                "fr-FR": "38. Entre 4 et 5 ans, si vous entriez dans une pièce et commenciez à lui parler sans l'appeler par son prénom, levait-il généralement les yeux et faisait-il attention à vous ?"
+              }
+            },
+            {
+              "id": "scq_2_r19",
+              "label": {
+                "fr-FR": "39. Entre 4 et 5 ans, lui arrivait-il de participer à des jeux imaginatifs avec d'autres enfants, chacun comprenant le rôle de l'autre ?"
+              }
+            },
+            {
+              "id": "scq_2_r20",
+              "label": {
+                "fr-FR": "40. Entre 4 et 5 ans, jouait-il à des jeux coopératifs nécessitant son intégration dans un groupe, comme cache-cache ou des jeux de ballon ?"
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "scq_2_c1",
+              "label": {
+                "fr-FR": "Oui"
+              }
+            },
+            {
+              "id": "scq_2_c2",
+              "label": {
+                "fr-FR": "Non"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "scq_2_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Pour cette partie, pensez à la période entre le 4e et le 5e anniversaire de votre enfant."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Questionnaire du camouflage - partie 1/2",
+      "elements": [
+        {
+          "id": "camouflage_1",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Questionnaire du camouflage - partie 1/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "camouflage_1_r1",
+              "label": {
+                "fr-FR": "1. Votre enfant copie intentionnellement le langage corporel ou les expressions faciales d'une personne avec laquelle il interagit."
+              }
+            },
+            {
+              "id": "camouflage_1_r2",
+              "label": {
+                "fr-FR": "2. Votre enfant apprend comment les personnes utilisent leur corps et leur visage pour interagir en regardant la télévision ou des films, ou en lisant des romans."
+              }
+            },
+            {
+              "id": "camouflage_1_r3",
+              "label": {
+                "fr-FR": "3. Votre enfant a essayé d'améliorer sa compréhension des compétences sociales en observant les autres."
+              }
+            },
+            {
+              "id": "camouflage_1_r4",
+              "label": {
+                "fr-FR": "4. Votre enfant répète des phrases dites par d'autres personnes exactement comme il les a entendues la première fois."
+              }
+            },
+            {
+              "id": "camouflage_1_r5",
+              "label": {
+                "fr-FR": "5. Votre enfant s'entraîne afin que ses expressions faciales et son langage corporel paraissent naturels."
+              }
+            },
+            {
+              "id": "camouflage_1_r6",
+              "label": {
+                "fr-FR": "6. Votre enfant apprend des compétences sociales en regardant des émissions ou des films et essaie de les utiliser dans ses interactions."
+              }
+            },
+            {
+              "id": "camouflage_1_r7",
+              "label": {
+                "fr-FR": "7. Dans ses interactions sociales, votre enfant utilise des comportements appris en regardant d'autres personnes interagir."
+              }
+            },
+            {
+              "id": "camouflage_1_r8",
+              "label": {
+                "fr-FR": "8. Votre enfant a recherché les règles des interactions sociales, par exemple dans des livres, afin d'améliorer ses compétences sociales."
+              }
+            },
+            {
+              "id": "camouflage_1_r9",
+              "label": {
+                "fr-FR": "9. Votre enfant a développé un scénario à suivre dans certaines situations sociales, par exemple une liste de questions ou de sujets."
+              }
+            },
+            {
+              "id": "camouflage_1_r10",
+              "label": {
+                "fr-FR": "10. Votre enfant fait attention à son langage corporel ou à ses expressions faciales pour avoir l'air plus détendu."
+              }
+            },
+            {
+              "id": "camouflage_1_r11",
+              "label": {
+                "fr-FR": "11. Votre enfant ajuste son langage corporel ou ses expressions faciales pour avoir l'air détendu."
+              }
+            },
+            {
+              "id": "camouflage_1_r12",
+              "label": {
+                "fr-FR": "12. Votre enfant observe son langage corporel ou ses expressions faciales afin d'avoir l'air intéressé par la personne avec laquelle il interagit."
+              }
+            },
+            {
+              "id": "camouflage_1_r13",
+              "label": {
+                "fr-FR": "13. Votre enfant ajuste son langage corporel ou ses expressions faciales pour avoir l'air intéressé par la personne avec laquelle il interagit."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "camouflage_1_c1",
+              "label": {
+                "fr-FR": "Pas du tout d'accord"
+              }
+            },
+            {
+              "id": "camouflage_1_c2",
+              "label": {
+                "fr-FR": "Pas d'accord"
+              }
+            },
+            {
+              "id": "camouflage_1_c3",
+              "label": {
+                "fr-FR": "Plutôt pas d'accord"
+              }
+            },
+            {
+              "id": "camouflage_1_c4",
+              "label": {
+                "fr-FR": "Ni d'accord ni pas d'accord"
+              }
+            },
+            {
+              "id": "camouflage_1_c5",
+              "label": {
+                "fr-FR": "Plutôt d'accord"
+              }
+            },
+            {
+              "id": "camouflage_1_c6",
+              "label": {
+                "fr-FR": "D'accord"
+              }
+            },
+            {
+              "id": "camouflage_1_c7",
+              "label": {
+                "fr-FR": "Complètement d'accord"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "camouflage_1_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Ces comportements peuvent être discrets et ce questionnaire peut sembler moins adapté à certains enfants. Répondez selon ce que vous observez le plus souvent."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Questionnaire du camouflage - partie 2/2",
+      "elements": [
+        {
+          "id": "camouflage_2",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Questionnaire du camouflage - partie 2/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "camouflage_2_r1",
+              "label": {
+                "fr-FR": "14. Votre enfant ne ressent pas le besoin de regarder les autres dans les yeux s'il n'en a pas envie."
+              }
+            },
+            {
+              "id": "camouflage_2_r2",
+              "label": {
+                "fr-FR": "15. Dans les interactions sociales, votre enfant ne semble pas avoir conscience de ce que font son visage et son corps."
+              }
+            },
+            {
+              "id": "camouflage_2_r3",
+              "label": {
+                "fr-FR": "16. Votre enfant pense toujours à l'impression qu'il fait aux autres."
+              }
+            },
+            {
+              "id": "camouflage_2_r4",
+              "label": {
+                "fr-FR": "17. Votre enfant semble toujours conscient de l'impression qu'il fait aux autres."
+              }
+            },
+            {
+              "id": "camouflage_2_r5",
+              "label": {
+                "fr-FR": "18. Votre enfant ressent rarement le besoin de jouer un rôle pour s'en sortir dans une situation sociale."
+              }
+            },
+            {
+              "id": "camouflage_2_r6",
+              "label": {
+                "fr-FR": "19. Lorsqu'il parle avec les autres, la conversation semble se dérouler naturellement pour votre enfant."
+              }
+            },
+            {
+              "id": "camouflage_2_r7",
+              "label": {
+                "fr-FR": "20. Dans des situations sociales, votre enfant essaie de trouver des moyens d'éviter d'interagir avec les autres."
+              }
+            },
+            {
+              "id": "camouflage_2_r8",
+              "label": {
+                "fr-FR": "21. Dans les situations sociales, votre enfant donne l'impression de devoir jouer un rôle plutôt que d'être lui-même."
+              }
+            },
+            {
+              "id": "camouflage_2_r9",
+              "label": {
+                "fr-FR": "22. Dans les situations sociales, votre enfant semble devoir se forcer à interagir avec les autres."
+              }
+            },
+            {
+              "id": "camouflage_2_r10",
+              "label": {
+                "fr-FR": "23. Dans les situations sociales, votre enfant semble faire semblant d'être « normal »."
+              }
+            },
+            {
+              "id": "camouflage_2_r11",
+              "label": {
+                "fr-FR": "24. Votre enfant a besoin du soutien d'autres personnes pour socialiser."
+              }
+            },
+            {
+              "id": "camouflage_2_r12",
+              "label": {
+                "fr-FR": "25. Votre enfant se sent libre d'être lui-même lorsqu'il est avec d'autres personnes."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "camouflage_2_c1",
+              "label": {
+                "fr-FR": "Pas du tout d'accord"
+              }
+            },
+            {
+              "id": "camouflage_2_c2",
+              "label": {
+                "fr-FR": "Pas d'accord"
+              }
+            },
+            {
+              "id": "camouflage_2_c3",
+              "label": {
+                "fr-FR": "Plutôt pas d'accord"
+              }
+            },
+            {
+              "id": "camouflage_2_c4",
+              "label": {
+                "fr-FR": "Ni d'accord ni pas d'accord"
+              }
+            },
+            {
+              "id": "camouflage_2_c5",
+              "label": {
+                "fr-FR": "Plutôt d'accord"
+              }
+            },
+            {
+              "id": "camouflage_2_c6",
+              "label": {
+                "fr-FR": "D'accord"
+              }
+            },
+            {
+              "id": "camouflage_2_c7",
+              "label": {
+                "fr-FR": "Complètement d'accord"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "camouflage_2_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Poursuivez avec les affirmations suivantes."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle d'éco-anxiété - partie 1/2",
+      "elements": [
+        {
+          "id": "eco_1",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle d'éco-anxiété - partie 1/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "eco_1_r1",
+              "label": {
+                "fr-FR": "1. Il est difficile à votre enfant de se concentrer lorsqu'il pense au changement climatique."
+              }
+            },
+            {
+              "id": "eco_1_r2",
+              "label": {
+                "fr-FR": "2. Il est difficile à votre enfant de s'endormir lorsqu'il pense au changement climatique."
+              }
+            },
+            {
+              "id": "eco_1_r3",
+              "label": {
+                "fr-FR": "3. Votre enfant fait des cauchemars à propos du changement climatique."
+              }
+            },
+            {
+              "id": "eco_1_r4",
+              "label": {
+                "fr-FR": "4. Votre enfant se retrouve à pleurer à cause du changement climatique."
+              }
+            },
+            {
+              "id": "eco_1_r5",
+              "label": {
+                "fr-FR": "5. Votre enfant se demande pourquoi il n'arrive pas à mieux gérer ses préoccupations liées au changement climatique."
+              }
+            },
+            {
+              "id": "eco_1_r6",
+              "label": {
+                "fr-FR": "6. Votre enfant se met à l'écart et pense aux raisons pour lesquelles il se sent ainsi face au changement climatique."
+              }
+            },
+            {
+              "id": "eco_1_r7",
+              "label": {
+                "fr-FR": "7. Votre enfant écrit ses réflexions sur le changement climatique et les analyse."
+              }
+            },
+            {
+              "id": "eco_1_r8",
+              "label": {
+                "fr-FR": "8. Votre enfant se demande pourquoi il réagit ainsi au changement climatique."
+              }
+            },
+            {
+              "id": "eco_1_r9",
+              "label": {
+                "fr-FR": "9. Ses préoccupations au sujet du changement climatique l'empêchent de s'amuser avec sa famille ou ses amis."
+              }
+            },
+            {
+              "id": "eco_1_r10",
+              "label": {
+                "fr-FR": "10. Votre enfant a du mal à trouver un équilibre entre ses préoccupations pour le développement durable et les besoins de sa famille."
+              }
+            },
+            {
+              "id": "eco_1_r11",
+              "label": {
+                "fr-FR": "11. Ses préoccupations à propos du changement climatique interfèrent avec sa capacité à faire son travail ou ses tâches scolaires."
+              }
+            },
+            {
+              "id": "eco_1_r12",
+              "label": {
+                "fr-FR": "12. Ses préoccupations concernant le changement climatique affectent négativement sa capacité à exploiter pleinement son potentiel."
+              }
+            },
+            {
+              "id": "eco_1_r13",
+              "label": {
+                "fr-FR": "13. Ses amis disent qu'il pense trop au changement climatique."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "eco_1_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "eco_1_c2",
+              "label": {
+                "fr-FR": "Rarement"
+              }
+            },
+            {
+              "id": "eco_1_c3",
+              "label": {
+                "fr-FR": "Parfois"
+              }
+            },
+            {
+              "id": "eco_1_c4",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "eco_1_c5",
+              "label": {
+                "fr-FR": "Presque toujours"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "eco_1_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Ce thème peut sembler différent des autres. Il aide à repérer d'éventuelles préoccupations liées au changement climatique chez votre enfant."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Enregistrer et continuer"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    },
+    {
+      "name": "Échelle d'éco-anxiété - partie 2/2",
+      "elements": [
+        {
+          "id": "eco_2",
+          "type": "matrix",
+          "headline": {
+            "fr-FR": "Échelle d'éco-anxiété - partie 2/2"
+          },
+          "required": true,
+          "rows": [
+            {
+              "id": "eco_2_r1",
+              "label": {
+                "fr-FR": "14. Votre enfant a été directement affecté par le changement climatique."
+              }
+            },
+            {
+              "id": "eco_2_r2",
+              "label": {
+                "fr-FR": "15. Votre enfant connaît quelqu'un qui a été directement affecté par le changement climatique."
+              }
+            },
+            {
+              "id": "eco_2_r3",
+              "label": {
+                "fr-FR": "16. Votre enfant a constaté l'altération d'un lieu important pour lui à la suite du changement climatique."
+              }
+            },
+            {
+              "id": "eco_2_r4",
+              "label": {
+                "fr-FR": "17. Votre enfant aurait aimé se comporter d'une façon plus respectueuse de l'environnement."
+              }
+            },
+            {
+              "id": "eco_2_r5",
+              "label": {
+                "fr-FR": "18. Votre enfant recycle."
+              }
+            },
+            {
+              "id": "eco_2_r6",
+              "label": {
+                "fr-FR": "19. Votre enfant éteint les lumières."
+              }
+            },
+            {
+              "id": "eco_2_r7",
+              "label": {
+                "fr-FR": "20. Votre enfant essaie de réduire les comportements qui contribuent au changement climatique."
+              }
+            },
+            {
+              "id": "eco_2_r8",
+              "label": {
+                "fr-FR": "21. Votre enfant se sent coupable s'il gaspille de l'énergie."
+              }
+            },
+            {
+              "id": "eco_2_r9",
+              "label": {
+                "fr-FR": "22. Votre enfant croit qu'il peut faire quelque chose pour aider à faire face au changement climatique."
+              }
+            }
+          ],
+          "columns": [
+            {
+              "id": "eco_2_c1",
+              "label": {
+                "fr-FR": "Jamais"
+              }
+            },
+            {
+              "id": "eco_2_c2",
+              "label": {
+                "fr-FR": "Rarement"
+              }
+            },
+            {
+              "id": "eco_2_c3",
+              "label": {
+                "fr-FR": "Parfois"
+              }
+            },
+            {
+              "id": "eco_2_c4",
+              "label": {
+                "fr-FR": "Souvent"
+              }
+            },
+            {
+              "id": "eco_2_c5",
+              "label": {
+                "fr-FR": "Presque toujours"
+              }
+            }
+          ],
+          "shuffleOption": "none",
+          "validation": {
+            "logic": "and",
+            "rules": [
+              {
+                "id": "eco_2_all_rows",
+                "type": "answerAllRows",
+                "params": {}
+              }
+            ]
+          },
+          "subheader": {
+            "fr-FR": "Dernière partie : merci pour votre attention jusqu'ici."
+          }
+        }
+      ],
+      "buttonLabel": {
+        "fr-FR": "Envoyer mes réponses"
+      },
+      "backButtonLabel": {
+        "fr-FR": "Retour"
+      }
+    }
+  ],
+  "endings": [
+    {
+      "id": "ccfd47150e303f3a06ed528a",
+      "type": "endScreen",
+      "headline": {
+        "fr-FR": "Merci, le questionnaire est terminé"
+      },
+      "subheader": {
+        "fr-FR": "Vos réponses ont bien été enregistrées. Merci pour votre temps et votre attention."
+      }
+    }
+  ],
+  "hiddenFields": {
+    "enabled": true,
+    "fieldIds": [
+      "participant_id"
+    ]
+  },
+  "variables": []
+}
